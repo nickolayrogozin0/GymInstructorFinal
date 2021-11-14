@@ -1,7 +1,9 @@
 package com.example.myapplication
 
-import androidx.room.*
-
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import androidx.room.Relation
 
 @Entity
 data class Program(
@@ -71,25 +73,3 @@ data class TrainingDays(
     val day5 : Int,
     val day6 : Int
 )
-
-@Dao
-interface ProgramDao{
-    @Transaction
-    @Query("SELECT * FROM Program")
-    fun getAllExercisesAndPrograms() : List<ProgramHasExercise>
-
-    @Transaction
-    @Query("SELECT * FROM Exercise")
-    fun getAllExercisesAndLoads() : List<ExerciseHasLoad>
-
-    @Query("SELECT * FROM CurrentProgress")
-    fun getCurrentProgress() : CurrentProgress
-
-    @Query("SELECT * FROM TrainingDays")
-    fun getTrainingDays() : TrainingDays
-}
-
-@Database(entities = [Program::class, Exercise::class, Load::class, CurrentProgress::class, TrainingDays::class], exportSchema = false, version = 5)
-abstract class MyDatabase : RoomDatabase() {
-    abstract fun programDao(): ProgramDao
-}

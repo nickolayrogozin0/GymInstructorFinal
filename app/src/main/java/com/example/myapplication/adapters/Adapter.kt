@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.ExerciseHasLoad
+import com.example.myapplication.R
 
 class Adapter(private val context: Context) : RecyclerView.Adapter<Adapter.ViewHolder>() {
     val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")

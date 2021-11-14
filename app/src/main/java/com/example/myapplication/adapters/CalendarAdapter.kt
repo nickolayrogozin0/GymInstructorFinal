@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.myapplication.adapters
 
 import android.graphics.Color
 import android.util.Log
@@ -7,10 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.R
+import com.example.myapplication.TrainingDays
 
 class CalendarAdapter(
     private val onDateClick: ViewHolder.OnDateClick,
-    private val trainingDays: TrainingDays) :
+    private val trainingDays: TrainingDays
+) :
     RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
 
     private var currentDayIndex = 0
