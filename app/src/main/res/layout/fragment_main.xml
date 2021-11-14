@@ -7,6 +7,21 @@
     android:background="@color/background"
     tools:context=".MainActivity">
 
+    <TextView
+        android:id="@+id/currentWeekTV"
+        android:layout_width="wrap_content"
+        android:layout_height="24dp"
+        android:layout_marginTop="4dp"
+
+        android:elevation="11dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="center"
+        android:text="Week 1"
+        android:textColor="#ABFFFFFF"
+        app:layout_constraintEnd_toEndOf="@id/calendar"
+        app:layout_constraintStart_toStartOf="@id/calendar"
+        app:layout_constraintTop_toTopOf="@id/calendar" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler"
         android:layout_width="0dp"
@@ -28,6 +43,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
+        android:elevation="10dp"
         android:background="@drawable/background"
         android:paddingStart="16dp"
         android:paddingTop="32dp"
@@ -44,6 +60,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
+        android:elevation="11dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/calendar"
         app:srcCompat="@drawable/ic_chevron_left"
@@ -55,32 +72,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="32dp"
+        android:elevation="11dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/calendar"
         app:srcCompat="@drawable/ic_chevron_right"
         app:tint="#66FFFFFF" />
 
-    <TextView
-        android:id="@+id/currentWeekTV"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="135dp"
-        android:fontFamily="@font/source_sans_pro_semibold"
-        android:gravity="center"
-        android:text="Week 1"
-        android:textColor="#ABFFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/right"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toTopOf="@+id/calendar" />
-
     <TableLayout
         android:id="@+id/program"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:elevation="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"

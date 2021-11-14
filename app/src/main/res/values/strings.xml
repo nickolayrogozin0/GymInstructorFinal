@@ -15,8 +15,8 @@
     <string name="plans_learn_more">Learn more</string>
     <string name="plans_select_program">Select program</string>
     <string name="plans_title">Program library</string>
-    <string name="plans_days">days a week</string>
-    <string name="plans_weeks">weeks</string>
+    <string name="plans_days">%1$d days a week</string>
+    <string name="plans_weeks">%1$d weeks</string>
     <string name="main_progress">Progress</string>
     <string name="main_sets">Sets</string>
     <string name="main_reps">Reps</string>

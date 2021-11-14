@@ -21,8 +21,6 @@ import com.example.myapplication.R
 
 class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
 
-    private var MAX_WEEKS = 0
-
     private lateinit var myView: View
     private lateinit var myDB: MyDatabase
     private lateinit var exerciseAdapter: Adapter
@@ -42,10 +40,6 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
         //Getting current progress dataclass and setting current values for query
         currentProgress = myDB.programDao().getCurrentProgress()
         currentProgram = myDB.programDao().getProgramWithExercisesById(currentProgress.program_id)
-
-        //Setting max amount of week value
-        MAX_WEEKS = currentProgram.program.weeks
-
 
         //Calendar recycler initialization
         initCalendarRecycler()
@@ -119,7 +113,7 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
     }
 
     private fun incWeek() {
-        if (currentProgress.week < MAX_WEEKS - 1)
+        if (currentProgress.week < currentProgram.program.weeks - 1)
             currentProgress.week++
         exerciseAdapter.setData(
             todayExerciseQuery()
@@ -133,10 +127,10 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
 
     private fun changeProgressBarAndCompleted() {
         myView.findViewById<ProgressBar>(R.id.programProgressBar)
-            .setProgress(currentProgress.week + 1 * (100 / MAX_WEEKS) * currentProgress.week, true)
+            .setProgress(currentProgress.week + 1 * (100 / currentProgram.program.weeks) * currentProgress.week, true)
         myView.findViewById<TextView>(R.id.programCompletedTV).text = getString(
             R.string.program_completed,
-            (currentProgress.week + 1 / MAX_WEEKS) * (100 / MAX_WEEKS)
+            (currentProgress.week + 1 / currentProgram.program.weeks) * (100 / currentProgram.program.weeks)
         )
     }
 

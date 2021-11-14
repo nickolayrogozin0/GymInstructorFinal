@@ -1,14 +1,207 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".fragments.UserFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/profileTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="@string/profile"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <LinearLayout
+        android:id="@+id/userAccountBlock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/profileTV">
+
+        <View
+            android:id="@+id/userCircleView"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0"
+            android:background="@drawable/circle" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/userNameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:gravity="bottom"
+                android:text="John Doe"
+                android:textColor="#DEFFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/userPhoneTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro"
+                android:gravity="top"
+                android:text="8 800 555 35 35"
+                android:textColor="#66FFFFFF" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/userMeasurementsBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_user"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/user_mes"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userAccountBlock" />
+
+    <Button
+        android:id="@+id/findProgramBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_dumbell"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/user_find"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userMeasurementsBtn" />
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_cog"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/settings"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/findProgramBtn" />
+
+    <Button
+        android:id="@+id/calculatorsBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_calculator"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/calculators"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsBtn" />
+
+    <Button
+        android:id="@+id/notesBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_book_open"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/notes"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculatorsBtn" />
+
+    <Button
+        android:id="@+id/logOutBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_log_out"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="@string/logout"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/notesBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

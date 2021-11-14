@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="10dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/programItemTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="CBB Covid Comeback (Full Gym Access)"
+        android:textColor="#DEFFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/programItemDaysTV"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/plans_days"
+        android:textColor="#ABFFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/daysDot"
+        app:layout_constraintTop_toBottomOf="@+id/programItemTitleTV" />
+
+    <View
+        android:id="@+id/daysDot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="#DEFFFFFF"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/programItemTitleTV" />
+
+    <TextView
+        android:id="@+id/programItemWeeksTV"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/plans_weeks"
+        android:textColor="#ABFFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/daysDot"
+        app:layout_constraintTop_toBottomOf="@+id/programItemDaysTV" />
+
+    <View
+        android:id="@+id/weeksDot"
+        android:layout_width="6dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/circle"
+        android:backgroundTint="#DEFFFFFF"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/programItemDaysTV" />
+
+    <TextView
+        android:id="@+id/experienceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/plans_exp"
+        android:textColor="#DEFFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weeksDot" />
+
+    <TextView
+        android:id="@+id/beginnerTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/plans_beginner"
+        android:textColor="#ABFFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/experienceTV" />
+
+    <TextView
+        android:id="@+id/expertTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/plans_expert"
+        android:textColor="#ABFFFFFF"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/programItemProgressBar"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/programItemProgressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
+        android:progress="50"
+        android:progressDrawable="@drawable/program_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/beginnerTV" />
+
+    <Button
+        android:id="@+id/programItemLearnMoreBtn"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_info"
+        android:text="@string/plans_learn_more"
+        android:textSize="8sp"
+        android:elevation="10dp"
+        app:backgroundTint="@color/on_on_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/programItemSelectBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/programItemProgressBar" />
+
+    <Button
+        android:id="@+id/programItemSelectBtn"
+        android:layout_width="0dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:elevation="10dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_plus_circle"
+        android:text="@string/plans_select_program"
+        android:textSize="8sp"
+        app:backgroundTint="@color/on_on_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/programItemLearnMoreBtn"
+        app:layout_constraintTop_toBottomOf="@+id/programItemProgressBar" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
