@@ -52,6 +52,25 @@ data class ExerciseHasLoad(
     )
     val listOfLoads : List<Load>
 )
+@Entity
+data class CurrentProgress(
+    @PrimaryKey(autoGenerate = true) val id : Int,
+    val program_id: Int,
+    var day : Int,
+    var week : Int
+)
+
+@Entity
+data class TrainingDays(
+    @PrimaryKey(autoGenerate = true) val id: Int,
+    val day0 : Int,
+    val day1 : Int,
+    val day2 : Int,
+    val day3 : Int,
+    val day4 : Int,
+    val day5 : Int,
+    val day6 : Int
+)
 
 @Dao
 interface ProgramDao{
@@ -62,9 +81,15 @@ interface ProgramDao{
     @Transaction
     @Query("SELECT * FROM Exercise")
     fun getAllExercisesAndLoads() : List<ExerciseHasLoad>
+
+    @Query("SELECT * FROM CurrentProgress")
+    fun getCurrentProgress() : CurrentProgress
+
+    @Query("SELECT * FROM TrainingDays")
+    fun getTrainingDays() : TrainingDays
 }
 
-@Database(entities = [Program::class, Exercise::class, Load::class], exportSchema = false, version = 3)
+@Database(entities = [Program::class, Exercise::class, Load::class, CurrentProgress::class, TrainingDays::class], exportSchema = false, version = 5)
 abstract class MyDatabase : RoomDatabase() {
     abstract fun programDao(): ProgramDao
 }
