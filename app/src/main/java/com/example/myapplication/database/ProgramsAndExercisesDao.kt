@@ -9,7 +9,7 @@ import com.example.myapplication.ProgramHasExercise
 import com.example.myapplication.TrainingDays
 
 @Dao
-interface ProgramDao{
+interface ProgramsAndExercisesDao{
     @Transaction
     @Query("SELECT * FROM Program")
     fun getAllExercisesAndPrograms() : List<ProgramHasExercise>

@@ -20,7 +20,9 @@ class ProgramListAdapter : RecyclerView.Adapter<ProgramListAdapter.ViewHolder>()
         var days: TextView = itemView.findViewById(R.id.programItemDaysTV)
         var weeks: TextView = itemView.findViewById(R.id.programItemWeeksTV)
         var progressBar: ProgressBar = itemView.findViewById(R.id.programItemProgressBar)
+        //Реализовать функционал просмотра справки о программе тренировок
         var learnButton: Button = itemView.findViewById(R.id.programItemLearnMoreBtn)
+        //Релизовать функционал выбора программы
         var selectButton: Button = itemView.findViewById(R.id.programItemSelectBtn)
     }
 

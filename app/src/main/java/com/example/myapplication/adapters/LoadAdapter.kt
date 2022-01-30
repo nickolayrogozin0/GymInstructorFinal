@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.Load
 import com.example.myapplication.R
 
-class ChildAdapter : RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
+class LoadAdapter : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {
 
     var listOfLoads = emptyList<Load>()
 
@@ -27,6 +27,9 @@ class ChildAdapter : RecyclerView.Adapter<ChildAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        //Как временное решение для размещения подписей
+        //в нулевой позиции вместо нагрузки выводятся названия колонок
+        //в будущем заменить на более оптимальный вариант
         if (position == 0){
             holder.sets.text = "Sets"
             holder.reps.text = "Reps"

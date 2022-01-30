@@ -10,7 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ExerciseHasLoad
 import com.example.myapplication.R
 
-class Adapter(private val context: Context) : RecyclerView.Adapter<Adapter.ViewHolder>() {
+class ExerciseAdapter(private val context: Context) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+//    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
+//    так как абсолютное большинство программ попадают в данный диапазон
     val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
     var listOfExercisesHasLoad = listOf<ExerciseHasLoad>()
 
@@ -30,7 +32,7 @@ class Adapter(private val context: Context) : RecyclerView.Adapter<Adapter.ViewH
         holder.title.text = currentItem.exercise.exercise_title
         holder.letter.text = listOfLetters[position]
 
-        val adapter = ChildAdapter()
+        val adapter = LoadAdapter()
         holder.childRecycler.adapter = adapter
         holder.childRecycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

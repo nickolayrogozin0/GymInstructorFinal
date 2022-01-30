@@ -5,14 +5,14 @@ import androidx.room.*
 import com.example.myapplication.*
 
 @Database(entities = [Program::class, Exercise::class, Load::class, CurrentProgress::class, TrainingDays::class], exportSchema = false, version = 5)
-abstract class MyDatabase : RoomDatabase() {
-    abstract fun programDao(): ProgramDao
+abstract class ProgramsAndExercisesDatabase : RoomDatabase() {
+    abstract fun programDao(): ProgramsAndExercisesDao
 
     companion object {
         @Volatile
-        private var INSTANCE: MyDatabase? = null
+        private var INSTANCE: ProgramsAndExercisesDatabase? = null
 
-        fun getDatabase(context: Context): MyDatabase {
+        fun getDatabase(context: Context): ProgramsAndExercisesDatabase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
@@ -20,7 +20,7 @@ abstract class MyDatabase : RoomDatabase() {
             synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    MyDatabase::class.java,
+                    ProgramsAndExercisesDatabase::class.java,
                     "database-name",
                 )
                     .fallbackToDestructiveMigration()

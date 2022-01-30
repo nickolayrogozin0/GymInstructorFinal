@@ -12,9 +12,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.*
-import com.example.myapplication.adapters.Adapter
+import com.example.myapplication.adapters.ExerciseAdapter
 import com.example.myapplication.adapters.CalendarAdapter
-import com.example.myapplication.database.MyDatabase
+import com.example.myapplication.database.ProgramsAndExercisesDatabase
 import com.google.android.flexbox.*
 import com.example.myapplication.R
 
@@ -22,8 +22,8 @@ import com.example.myapplication.R
 class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
 
     private lateinit var myView: View
-    private lateinit var myDB: MyDatabase
-    private lateinit var exerciseAdapter: Adapter
+    private lateinit var programsAndExercisesDB: ProgramsAndExercisesDatabase
+    private lateinit var exerciseExerciseAdapter: ExerciseAdapter
     private lateinit var calendarAdapter: CalendarAdapter
     private lateinit var currentProgress: CurrentProgress
     private lateinit var currentProgram: ProgramHasExercise
@@ -35,11 +35,11 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
         myView = inflater.inflate(R.layout.fragment_main, container, false)
 
         //Database initialization
-        myDB = MyDatabase.getDatabase(requireContext())
+        programsAndExercisesDB = ProgramsAndExercisesDatabase.getDatabase(requireContext())
 
         //Getting current progress dataclass and setting current values for query
-        currentProgress = myDB.programDao().getCurrentProgress()
-        currentProgram = myDB.programDao().getProgramWithExercisesById(currentProgress.program_id)
+        currentProgress = programsAndExercisesDB.programDao().getCurrentProgress()
+        currentProgram = programsAndExercisesDB.programDao().getProgramWithExercisesById(currentProgress.program_id)
 
         //Calendar recycler initialization
         initCalendarRecycler()
@@ -77,15 +77,15 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
 
     private fun initExerciseRecycler() {
         val exerciseRecycler = myView.findViewById<RecyclerView>(R.id.recycler)
-        exerciseAdapter = Adapter(requireContext())
-        exerciseRecycler.adapter = exerciseAdapter
+        exerciseExerciseAdapter = ExerciseAdapter(requireContext())
+        exerciseRecycler.adapter = exerciseExerciseAdapter
         exerciseRecycler.layoutManager = LinearLayoutManager(requireContext())
-        exerciseAdapter.setData(todayExerciseQuery())
+        exerciseExerciseAdapter.setData(todayExerciseQuery())
     }
 
     private fun initCalendarRecycler() {
         val calendarRecycler = myView.findViewById<RecyclerView>(R.id.calendar)
-        calendarAdapter = CalendarAdapter(this, myDB.programDao().getTrainingDays())
+        calendarAdapter = CalendarAdapter(this, programsAndExercisesDB.programDao().getTrainingDays())
         calendarRecycler.adapter = calendarAdapter
         val calendarLayout = FlexboxLayoutManager(requireContext())
         calendarLayout.justifyContent = JustifyContent.CENTER
@@ -101,7 +101,7 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
         Log.i("WEEK", currentProgress.week.toString())
         if (currentProgress.week != 0) {
             currentProgress.week--
-            exerciseAdapter.setData(
+            exerciseExerciseAdapter.setData(
                 todayExerciseQuery()
             )
         }
@@ -115,7 +115,7 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
     private fun incWeek() {
         if (currentProgress.week < currentProgram.program.weeks - 1)
             currentProgress.week++
-        exerciseAdapter.setData(
+        exerciseExerciseAdapter.setData(
             todayExerciseQuery()
         )
         changeWeek()
@@ -146,14 +146,14 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
 
     override fun onDateClick(pos: Int) {
         currentProgress.day = pos
-        exerciseAdapter.setData(
+        exerciseExerciseAdapter.setData(
             todayExerciseQuery()
         )
         calendarAdapter.setData(pos)
     }
 
     private fun todayExerciseQuery(): List<ExerciseHasLoad> {
-        return myDB.programDao().getExercisesHasLoadForToday(
+        return programsAndExercisesDB.programDao().getExercisesHasLoadForToday(
             currentProgram.listOfExercises[0].exercise_id,
             currentProgram.listOfExercises.last().exercise_id,
             currentProgress.day,
