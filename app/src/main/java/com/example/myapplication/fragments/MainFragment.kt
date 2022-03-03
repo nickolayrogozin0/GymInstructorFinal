@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.ProgressBar
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,11 +18,13 @@ import com.example.myapplication.adapters.CalendarAdapter
 import com.example.myapplication.database.ProgramsAndExercisesDatabase
 import com.google.android.flexbox.*
 import com.example.myapplication.R
+import com.example.myapplication.databinding.FragmentMainBinding
 
 
-class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
+class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
+    ExerciseAdapter.OnExerciseClick {
 
-    private lateinit var myView: View
+    private lateinit var binding: FragmentMainBinding
     private lateinit var programsAndExercisesDB: ProgramsAndExercisesDatabase
     private lateinit var exerciseExerciseAdapter: ExerciseAdapter
     private lateinit var calendarAdapter: CalendarAdapter
@@ -32,14 +35,15 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        myView = inflater.inflate(R.layout.fragment_main, container, false)
+        binding = FragmentMainBinding.inflate(layoutInflater)
 
         //Database initialization
         programsAndExercisesDB = ProgramsAndExercisesDatabase.getDatabase(requireContext())
 
         //Getting current progress dataclass and setting current values for query
         currentProgress = programsAndExercisesDB.programDao().getCurrentProgress()
-        currentProgram = programsAndExercisesDB.programDao().getProgramWithExercisesById(currentProgress.program_id)
+        currentProgram = programsAndExercisesDB.programDao()
+            .getProgramWithExercisesById(currentProgress.program_id)
 
         //Calendar recycler initialization
         initCalendarRecycler()
@@ -51,17 +55,15 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
         initExerciseRecycler()
 
         //Setting onClickListeners to switch weeks
-        val right = myView.findViewById<ImageButton>(R.id.right)
-        right.setOnClickListener {
+        binding.right.setOnClickListener {
             incWeek()
         }
 
-        val left = myView.findViewById<ImageButton>(R.id.left)
-        left.setOnClickListener {
+        binding.left.setOnClickListener {
             decWeek()
         }
 
-        return myView
+        return binding.root
     }
 
     private fun initProgramBlock() {
@@ -71,28 +73,27 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
     }
 
     private fun changeTitle() {
-        myView.findViewById<TextView>(R.id.programTitleTV).text =
+        binding.programTitleTV.text =
             currentProgram.program.program_title
     }
 
     private fun initExerciseRecycler() {
-        val exerciseRecycler = myView.findViewById<RecyclerView>(R.id.recycler)
-        exerciseExerciseAdapter = ExerciseAdapter(requireContext())
-        exerciseRecycler.adapter = exerciseExerciseAdapter
-        exerciseRecycler.layoutManager = LinearLayoutManager(requireContext())
+        exerciseExerciseAdapter = ExerciseAdapter(requireContext(), this)
+        binding.recycler.adapter = exerciseExerciseAdapter
+        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
         exerciseExerciseAdapter.setData(todayExerciseQuery())
     }
 
     private fun initCalendarRecycler() {
-        val calendarRecycler = myView.findViewById<RecyclerView>(R.id.calendar)
-        calendarAdapter = CalendarAdapter(this, programsAndExercisesDB.programDao().getTrainingDays())
-        calendarRecycler.adapter = calendarAdapter
-        val calendarLayout = FlexboxLayoutManager(requireContext())
-        calendarLayout.justifyContent = JustifyContent.CENTER
-        calendarLayout.alignItems = AlignItems.CENTER
-        calendarLayout.flexDirection = FlexDirection.ROW
-        calendarLayout.flexWrap = FlexWrap.WRAP
-        calendarRecycler.layoutManager = calendarLayout
+        val calendarAdapter =
+            CalendarAdapter(this, programsAndExercisesDB.programDao().getTrainingDays())
+        binding.calendar.adapter = calendarAdapter
+        val layoutManager = object : LinearLayoutManager(requireContext(), HORIZONTAL, false) {
+            override fun canScrollHorizontally(): Boolean {
+                return false
+            }
+        }
+        binding.calendar.layoutManager = layoutManager
         calendarAdapter.setData(currentProgress.day)
         changeWeek()
     }
@@ -126,21 +127,24 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
     }
 
     private fun changeProgressBarAndCompleted() {
-        myView.findViewById<ProgressBar>(R.id.programProgressBar)
-            .setProgress(currentProgress.week + 1 * (100 / currentProgram.program.weeks) * currentProgress.week, true)
-        myView.findViewById<TextView>(R.id.programCompletedTV).text = getString(
+        binding.programProgressBar
+            .setProgress(
+                currentProgress.week + 1 * (100 / currentProgram.program.weeks) * currentProgress.week,
+                true
+            )
+        binding.programCompletedTV.text = getString(
             R.string.program_completed,
             (currentProgress.week + 1 / currentProgram.program.weeks) * (100 / currentProgram.program.weeks)
         )
     }
 
     private fun changeBlock() {
-        myView.findViewById<TextView>(R.id.programBlockTV).text =
+        binding.programBlockTV.text =
             getString(R.string.program_block, currentProgress.week + 1 / 4 + 1)
     }
 
     private fun changeWeek() {
-        myView.findViewById<TextView>(R.id.currentWeekTV).text =
+        binding.currentWeekTV.text =
             getString(R.string.calendar_week, currentProgress.week + 1)
     }
 
@@ -158,6 +162,20 @@ class MainFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick {
             currentProgram.listOfExercises.last().exercise_id,
             currentProgress.day,
             currentProgress.week
+        )
+    }
+
+    override fun onFinishClick(pos: Int) {
+        val viewHolder = binding.recycler.findViewHolderForAdapterPosition(pos)
+        val itemView = viewHolder?.itemView
+        itemView?.alpha = 0.4f
+        val button = itemView?.findViewById<RadioButton>(R.id.finishButton)
+        button?.isClickable = false
+        button?.isChecked = true
+        val exercise = exerciseExerciseAdapter.listOfExercisesHasLoad[pos].exercise
+        exercise.isComplete = 1
+        programsAndExercisesDB.programDao().finishExercise(
+            exercise
         )
     }
 

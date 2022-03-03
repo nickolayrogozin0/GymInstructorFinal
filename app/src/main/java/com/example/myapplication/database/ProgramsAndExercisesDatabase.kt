@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.*
 import com.example.myapplication.*
 
-@Database(entities = [Program::class, Exercise::class, Load::class, CurrentProgress::class, TrainingDays::class], exportSchema = false, version = 5)
+@Database(entities = [Program::class, Exercise::class, Load::class, CurrentProgress::class, TrainingDays::class], exportSchema = false, version = 6)
 abstract class ProgramsAndExercisesDatabase : RoomDatabase() {
     abstract fun programDao(): ProgramsAndExercisesDao
 

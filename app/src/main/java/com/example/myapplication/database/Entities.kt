@@ -22,7 +22,8 @@ data class Exercise(
     val program_id: Int,
     val exercise_title : String,
     val day : Int,
-    val week : Int
+    val week : Int,
+    var isComplete : Int,
 )
 
 @Entity
