@@ -7,22 +7,22 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.myapplication.ui.exercise.ExerciseFragment"
+        android:name="com.brxq.gyminstructor.ui.exercise.ExerciseFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/programFragment"
-        android:name="com.example.myapplication.ui.programs.ProgramFragment"
+        android:name="com.brxq.gyminstructor.ui.programs.ProgramFragment"
         android:label="fragment_program"
         tools:layout="@layout/fragment_program" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.example.myapplication.fragments.StatisticsFragment"
+        android:name="com.brxq.gyminstructor.fragments.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.example.myapplication.fragments.UserFragment"
+        android:name="com.brxq.gyminstructor.fragments.UserFragment"
         android:label="fragment_user"
         tools:layout="@layout/fragment_user" />
 </navigation>
