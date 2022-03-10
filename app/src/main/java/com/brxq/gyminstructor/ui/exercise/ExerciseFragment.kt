@@ -78,13 +78,31 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick, Exe
 
         //Setting current day exercises
 
-        viewModel.getTodayExercise()?.observe(viewLifecycleOwner){
-            if (it!=null){
-                exerciseAdapter!!.setData(it)
+        viewModel.getCurrentProgress()?.observe(viewLifecycleOwner){ currentProgress ->
+            if (currentProgress != null){
+                viewModel.getTodayExercise(
+                    currentProgress.id,
+                    currentProgress.day,
+                    currentProgress.week
+                )?.observe(viewLifecycleOwner){ list ->
+                    if (list != null){
+                        exerciseAdapter!!.setData(list)
+                    }else {
+                        Toast.makeText(requireContext(), "LIST EMPTY", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }else {
-                Toast.makeText(requireContext(), "NO EXERCISE TODAY", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "PROGRESS NULL", Toast.LENGTH_SHORT).show()
             }
         }
+
+//        viewModel.getTodayExercise()?.observe(viewLifecycleOwner){
+//            if (it!=null){
+//                exerciseAdapter!!.setData(it)
+//            }else {
+//                Toast.makeText(requireContext(), "NO EXERCISE TODAY", Toast.LENGTH_SHORT).show()
+//            }
+//        }
 
 
 //        exerciseAdapter?.setData(exerciseList)

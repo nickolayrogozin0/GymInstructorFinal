@@ -16,9 +16,16 @@ class ExerciseRepository @Inject constructor(
 
     private var today : LiveData<List<ExerciseHasLoad>>? = null
 
-    fun getTodayExercise() : LiveData<List<ExerciseHasLoad>>{
-        today = database.exerciseDao().getToday(1,1,0)
+    fun getTodayExercise(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>>{
+        today = database.exerciseDao().getToday(id, day, week)
         return today as LiveData<List<ExerciseHasLoad>>
+    }
+
+    private var progress : LiveData<CurrentProgress>? = null
+
+    fun getCurrentProgress(): LiveData<CurrentProgress>? {
+        progress = database.exerciseDao().getCurrentProgress()
+        return progress
     }
 
 }

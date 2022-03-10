@@ -22,11 +22,20 @@ class ExerciseViewModel @Inject constructor(
 
     private var today : LiveData<List<ExerciseHasLoad>>? = null
 
-    fun getTodayExercise() : LiveData<List<ExerciseHasLoad>>? {
+    fun getTodayExercise(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>>? {
         viewModelScope.launch {
-           today = repository.getTodayExercise()
+           today = repository.getTodayExercise(id, day, week)
         }
        return today
+    }
+
+    private var progress : LiveData<CurrentProgress>? = null
+
+    fun getCurrentProgress() : LiveData<CurrentProgress>? {
+        viewModelScope.launch {
+            progress = repository.getCurrentProgress()
+        }
+        return progress
     }
 
 }
