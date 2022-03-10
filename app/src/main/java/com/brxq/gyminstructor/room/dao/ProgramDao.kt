@@ -17,9 +17,6 @@ interface ProgramDao {
     @Query("SELECT * FROM Program WHERE program_id = :id")
     fun getProgramWithExercisesById(id : Int) : ProgramHasExercise
 
-    @Query("SELECT * FROM CurrentProgress")
-    fun getCurrentProgress() : CurrentProgress
-
     @Query("SELECT * FROM TrainingDays")
     fun getTrainingDays() : TrainingDays
 

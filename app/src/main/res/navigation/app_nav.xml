@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.brxq.gyminstructor.ui.exercise.ExerciseFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_exercise" />
     <fragment
         android:id="@+id/programFragment"
         android:name="com.brxq.gyminstructor.ui.programs.ProgramFragment"

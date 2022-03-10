@@ -24,7 +24,10 @@ object DatabaseModule {
             context,
             ProgramExerciseDatabase::class.java,
             EXERCISE_DATABASE
-        ).build()
+        )
+            .fallbackToDestructiveMigration()
+            .createFromAsset("database/mydb.db")
+            .build()
     }
 
 }

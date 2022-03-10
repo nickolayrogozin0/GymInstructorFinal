@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/exerciseRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -22,7 +22,7 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendar"
+        android:id="@+id/calendarRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -45,7 +45,7 @@
         android:layout_marginTop="4dp"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/calendar"
+        app:layout_constraintTop_toTopOf="@id/calendarRecyclerView"
         app:srcCompat="@drawable/ic_chevron_left"
         app:tint="#66FFFFFF" />
 
@@ -57,7 +57,7 @@
         android:layout_marginEnd="32dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/calendar"
+        app:layout_constraintTop_toTopOf="@id/calendarRecyclerView"
         app:srcCompat="@drawable/ic_chevron_right"
         app:tint="#66FFFFFF" />
 
@@ -75,7 +75,7 @@
         app:layout_constraintEnd_toStartOf="@+id/right"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/left"
-        app:layout_constraintTop_toTopOf="@+id/calendar" />
+        app:layout_constraintTop_toTopOf="@+id/calendarRecyclerView" />
 
     <TableLayout
         android:id="@+id/program"
@@ -88,7 +88,7 @@
         android:backgroundTint="@color/on_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar">
+        app:layout_constraintTop_toBottomOf="@+id/calendarRecyclerView">
 
         <TableRow
             android:layout_width="267dp"

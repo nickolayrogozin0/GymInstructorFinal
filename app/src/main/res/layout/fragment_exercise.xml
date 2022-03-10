@@ -18,12 +18,12 @@
         android:gravity="center"
         android:text="Week 1"
         android:textColor="#ABFFFFFF"
-        app:layout_constraintEnd_toEndOf="@id/calendar"
-        app:layout_constraintStart_toStartOf="@id/calendar"
-        app:layout_constraintTop_toTopOf="@id/calendar" />
+        app:layout_constraintEnd_toEndOf="@id/calendarRecyclerView"
+        app:layout_constraintStart_toStartOf="@id/calendarRecyclerView"
+        app:layout_constraintTop_toTopOf="@id/calendarRecyclerView" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/exerciseRecyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
@@ -37,21 +37,24 @@
     </androidx.recyclerview.widget.RecyclerView>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/calendar"
+        android:id="@+id/calendarRecyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:elevation="10dp"
         android:background="@drawable/background"
+        android:elevation="10dp"
+        android:orientation="horizontal"
         android:paddingStart="16dp"
         android:paddingTop="32dp"
         android:paddingEnd="16dp"
         android:paddingBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:itemCount="7"
+        tools:listitem="@layout/calendar" />
 
     <ImageButton
         android:id="@+id/left"
@@ -62,7 +65,7 @@
         android:background="@android:color/transparent"
         android:elevation="11dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@id/calendar"
+        app:layout_constraintTop_toTopOf="@id/calendarRecyclerView"
         app:srcCompat="@drawable/ic_chevron_left"
         app:tint="#66FFFFFF" />
 
@@ -75,7 +78,7 @@
         android:elevation="11dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/calendar"
+        app:layout_constraintTop_toTopOf="@id/calendarRecyclerView"
         app:srcCompat="@drawable/ic_chevron_right"
         app:tint="#66FFFFFF" />
 
@@ -91,7 +94,7 @@
         android:backgroundTint="@color/on_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar">
+        app:layout_constraintTop_toBottomOf="@+id/calendarRecyclerView">
 
         <TableRow
             android:layout_width="267dp"
