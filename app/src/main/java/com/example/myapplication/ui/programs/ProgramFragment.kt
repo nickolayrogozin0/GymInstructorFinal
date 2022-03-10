@@ -1,4 +1,4 @@
-package com.example.myapplication.fragments
+package com.example.myapplication.ui.programs
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.adapters.ProgramListAdapter
 import com.example.myapplication.database.ProgramsAndExercisesDatabase
 
 class ProgramFragment : Fragment() {

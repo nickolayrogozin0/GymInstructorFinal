@@ -1,4 +1,4 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.ui.exercise
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.ExerciseHasLoad
 import com.example.myapplication.R
+import com.example.myapplication.ui.exercise.load.LoadAdapter
 
 class ExerciseAdapter(
     private val context: Context,
@@ -17,7 +18,7 @@ class ExerciseAdapter(
 ) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
 //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
 //    так как абсолютное большинство программ попадают в данный диапазон
-    val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
+private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
     var listOfExercisesHasLoad = listOf<ExerciseHasLoad>()
 
     interface OnExerciseClick{

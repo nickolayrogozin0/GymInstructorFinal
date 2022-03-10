@@ -1,4 +1,4 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.ui.exercise.calendar
 
 import android.graphics.Color
 import android.util.Log
