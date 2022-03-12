@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.Load
+import com.example.myapplication.database.Load
 import com.example.myapplication.R
 
 class LoadAdapter : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {

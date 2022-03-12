@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.ProgramHasExercise
+import com.example.myapplication.database.ProgramHasExercise
 import com.example.myapplication.R
 
 class ProgramListAdapter : RecyclerView.Adapter<ProgramListAdapter.ViewHolder>() {

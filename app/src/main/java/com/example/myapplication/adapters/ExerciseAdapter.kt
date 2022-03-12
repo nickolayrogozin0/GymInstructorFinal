@@ -8,7 +8,7 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.ExerciseHasLoad
+import com.example.myapplication.database.ExerciseHasLoad
 import com.example.myapplication.R
 
 class ExerciseAdapter(
@@ -18,7 +18,7 @@ class ExerciseAdapter(
 //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
 //    так как абсолютное большинство программ попадают в данный диапазон
     val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
-    var listOfExercisesHasLoad = listOf<ExerciseHasLoad>()
+    val listOfExercisesHasLoad = mutableListOf<ExerciseHasLoad>()
 
     interface OnExerciseClick{
         fun onFinishClick(pos : Int)
@@ -67,7 +67,8 @@ class ExerciseAdapter(
     }
 
     fun setData(it: List<ExerciseHasLoad>) {
-        listOfExercisesHasLoad = it
+        listOfExercisesHasLoad.clear()
+        listOfExercisesHasLoad.addAll(it)
         notifyDataSetChanged()
     }
 

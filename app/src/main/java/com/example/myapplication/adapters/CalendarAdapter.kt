@@ -8,13 +8,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.TrainingDays
+import com.example.myapplication.database.TrainingDays
 
 class CalendarAdapter(
     private val onDateClick: ViewHolder.OnDateClick,
-    private val trainingDays: TrainingDays
 ) :
     RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
+
+    private var trainingDays : TrainingDays? = null
 
     private var currentDayIndex = 0
     private var listTrainingDays = ArrayList<Int>()
@@ -97,31 +98,36 @@ class CalendarAdapter(
     //Заменить проверку уставновленных тренировочных дней на более адекватный вариант??
     private fun getTrainingDays() {
         listTrainingDays.clear()
-        if (trainingDays.day0 == 1) {
+        if (trainingDays?.day0 == 1) {
             listTrainingDays.add(0)
         }
-        if (trainingDays.day1 == 1) {
+        if (trainingDays?.day1 == 1) {
             listTrainingDays.add(1)
         }
-        if (trainingDays.day2 == 1) {
+        if (trainingDays?.day2 == 1) {
             listTrainingDays.add(2)
         }
-        if (trainingDays.day3 == 1) {
+        if (trainingDays?.day3 == 1) {
             listTrainingDays.add(3)
         }
-        if (trainingDays.day4 == 1) {
+        if (trainingDays?.day4 == 1) {
             listTrainingDays.add(4)
         }
-        if (trainingDays.day5 == 1) {
+        if (trainingDays?.day5 == 1) {
             listTrainingDays.add(5)
         }
-        if (trainingDays.day6 == 1) {
+        if (trainingDays?.day6 == 1) {
             listTrainingDays.add(6)
         }
     }
 
     fun setData(pos: Int) {
         currentDayIndex = pos
+        notifyDataSetChanged()
+    }
+
+    fun setTrainingDays(trainingDays: TrainingDays){
+        this.trainingDays = trainingDays
         notifyDataSetChanged()
     }
 }

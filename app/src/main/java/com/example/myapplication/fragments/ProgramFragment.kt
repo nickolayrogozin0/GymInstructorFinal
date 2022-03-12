@@ -21,15 +21,15 @@ class ProgramFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         myView = inflater.inflate(R.layout.fragment_program, container, false)
-        programsAndExercisesDB = ProgramsAndExercisesDatabase.getDatabase(requireContext())
-
-        val programListAdapter = ProgramListAdapter()
-        val programListRecycler = myView.findViewById<RecyclerView>(R.id.programs)
-
-        programListRecycler.adapter = programListAdapter
-        programListRecycler.layoutManager = LinearLayoutManager(requireContext())
-
-        programListAdapter.setData(programsAndExercisesDB.programDao().getAllExercisesAndPrograms())
+//        programsAndExercisesDB = ProgramsAndExercisesDatabase.getDatabase(requireContext())
+//
+//        val programListAdapter = ProgramListAdapter()
+//        val programListRecycler = myView.findViewById<RecyclerView>(R.id.programs)
+//
+//        programListRecycler.adapter = programListAdapter
+//        programListRecycler.layoutManager = LinearLayoutManager(requireContext())
+//
+//        programListAdapter.setData(programsAndExercisesDB.programDao().getAllExercisesAndPrograms())
 
 
         return myView
