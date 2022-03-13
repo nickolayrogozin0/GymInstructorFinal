@@ -1,4 +1,4 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.screens.plan
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,8 +7,8 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.database.ProgramHasExercise
 import com.example.myapplication.R
+import com.example.myapplication.model.ProgramHasExercise
 
 class ProgramListAdapter : RecyclerView.Adapter<ProgramListAdapter.ViewHolder>() {
 

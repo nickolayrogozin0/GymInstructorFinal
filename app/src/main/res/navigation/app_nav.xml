@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.example.myapplication.fragments.MainFragment"
+        android:name="com.example.myapplication.screens.exercise.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main" />
     <fragment
         android:id="@+id/programFragment"
-        android:name="com.example.myapplication.fragments.ProgramFragment"
+        android:name="com.example.myapplication.screens.plan.ProgramFragment"
         android:label="fragment_program"
         tools:layout="@layout/fragment_program" />
     <fragment

@@ -1,4 +1,4 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.screens.exercise
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -8,15 +8,17 @@ import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.database.ExerciseHasLoad
 import com.example.myapplication.R
+import com.example.myapplication.model.ExerciseHasLoad
 
 class ExerciseAdapter(
     private val context: Context,
     private val onExerciseClick: OnExerciseClick
 ) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+
 //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
 //    так как абсолютное большинство программ попадают в данный диапазон
+
     val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
     val listOfExercisesHasLoad = mutableListOf<ExerciseHasLoad>()
 
@@ -50,7 +52,15 @@ class ExerciseAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = listOfExercisesHasLoad[position]
-
+        if (currentItem.exercise.isComplete == 1){
+            holder.itemView.alpha = 0.4f
+            holder.finishButton.isChecked = true
+            holder.finishButton.isClickable = false
+        }else {
+            holder.itemView.alpha = 1f
+            holder.finishButton.isChecked = false
+            holder.finishButton.isClickable = true
+        }
         holder.title.text = currentItem.exercise.exercise_title
         holder.letter.text = listOfLetters[position]
 
@@ -69,6 +79,7 @@ class ExerciseAdapter(
     fun setData(it: List<ExerciseHasLoad>) {
         listOfExercisesHasLoad.clear()
         listOfExercisesHasLoad.addAll(it)
+
         notifyDataSetChanged()
     }
 

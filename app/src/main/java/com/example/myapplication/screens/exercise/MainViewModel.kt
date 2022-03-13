@@ -1,4 +1,4 @@
-package com.example.myapplication.fragments
+package com.example.myapplication.screens.exercise
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,10 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.database.*
+import com.example.myapplication.model.*
 import com.example.myapplication.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,37 +19,21 @@ class MainViewModel @Inject constructor(
 
     private val _currentProgress = MutableLiveData<CurrentProgress>()
 
-    private var programWithExerciseById: ProgramHasExercise? = null
+    private val _programWithExerciseById = MutableLiveData<ProgramHasExercise>()
 
     private val _exerciseForToday = MutableLiveData(emptyList<ExerciseHasLoad>())
 
     private val _trainingDays = MutableLiveData<TrainingDays>()
 
 
-    fun getProgramWithExercisesById(id: Int): ProgramHasExercise? {
+    fun getProgramWithExercisesById(id: Int): LiveData<ProgramHasExercise> {
         viewModelScope.launch {
-            programWithExerciseById = repository.getProgramWithExercisesById(id)
+            _programWithExerciseById.value = repository.getProgramWithExercisesById(id)
         }
-        return programWithExerciseById
+        return _programWithExerciseById
     }
 
-//    fun getExerciseForToday(
-//        bottom_id: Int,
-//        top_id: Int,
-//        currentDay: Int,
-//        currentWeek: Int
-//    ): StateFlow<List<ExerciseHasLoad>> {
-//        viewModelScope.launch {
-//            _exerciseForToday.value =
-//                repository.getExercisesHasLoadForToday(
-//                    bottom_id,
-//                    top_id,
-//                    currentDay,
-//                    currentWeek
-//                )
-//        }
-//        return _exerciseForToday
-//    }
+
     fun getExerciseForToday(
         program_id : Int,
         currentDay: Int,

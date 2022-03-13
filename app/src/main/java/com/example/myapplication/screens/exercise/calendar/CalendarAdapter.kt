@@ -1,4 +1,4 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.screens.exercise.calendar
 
 import android.graphics.Color
 import android.util.Log
@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.database.TrainingDays
+import com.example.myapplication.model.TrainingDays
+
 
 class CalendarAdapter(
     private val onDateClick: ViewHolder.OnDateClick,

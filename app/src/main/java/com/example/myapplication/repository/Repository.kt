@@ -1,6 +1,7 @@
 package com.example.myapplication.repository
 
 import com.example.myapplication.database.*
+import com.example.myapplication.model.*
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -19,12 +20,8 @@ class Repository @Inject constructor(
         database.programDao().updateCurrentProgress(currentProgress)
     }
 
-
-//    suspend fun getExercisesHasLoadForToday(bottom_id : Int, top_id : Int, currentDay : Int, currentWeek : Int) : List<ExerciseHasLoad>{
-//        return database.programDao().getExercisesHasLoadForToday(bottom_id, top_id, currentDay, currentWeek)
-//    }
     suspend fun getExercisesHasLoadForToday(program_id : Int, currentDay : Int, currentWeek : Int) : List<ExerciseHasLoad>{
-        return database.programDao().getExercisesHasLoadForToday(program_id, currentDay, currentWeek)
+        return database.exerciseDao().getExercisesHasLoadForToday(program_id, currentDay, currentWeek)
     }
 
     suspend fun getTrainingDays() : TrainingDays {
@@ -32,7 +29,7 @@ class Repository @Inject constructor(
     }
 
     suspend fun finishExercise(exercise: Exercise){
-        database.programDao().finishExercise(exercise)
+        database.exerciseDao().finishExercise(exercise)
     }
 
 }

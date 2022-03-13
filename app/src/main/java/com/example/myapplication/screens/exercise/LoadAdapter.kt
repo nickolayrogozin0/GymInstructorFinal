@@ -1,12 +1,12 @@
-package com.example.myapplication.adapters
+package com.example.myapplication.screens.exercise
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.database.Load
 import com.example.myapplication.R
+import com.example.myapplication.model.Load
 
 class LoadAdapter : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {
 
