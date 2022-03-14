@@ -16,13 +16,14 @@ class ExerciseAdapter(
     private val context: Context,
     private val onExerciseClick: OnExerciseClick
 ) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
-//    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
+    //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
 //    так как абсолютное большинство программ попадают в данный диапазон
-private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
+    private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
     var listOfExercisesHasLoad = listOf<ExerciseHasLoad>()
 
-    interface OnExerciseClick{
-        fun onFinishClick(pos : Int)
+    interface OnExerciseClick {
+        fun onFinishClick(pos: Int)
+        fun decorateItem(itemView: View)
     }
 
     class ViewHolder(
@@ -32,7 +33,7 @@ private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
         val title: TextView = itemView.findViewById(R.id.exerciseTitleTV)
         val letter: TextView = itemView.findViewById(R.id.letterTV)
         val childRecycler: RecyclerView = itemView.findViewById(R.id.childRecycler)
-        val finishButton : RadioButton = itemView.findViewById(R.id.finishButton)
+        val finishButton: RadioButton = itemView.findViewById(R.id.finishButton)
 
         init {
             finishButton.setOnClickListener {
@@ -54,6 +55,10 @@ private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
 
         holder.title.text = currentItem.exercise.exercise_title
         holder.letter.text = listOfLetters[position]
+
+        if (listOfExercisesHasLoad[position].exercise.isComplete == 1) onExerciseClick.decorateItem(
+            holder.itemView
+        )
 
         val adapter = LoadAdapter()
         holder.childRecycler.adapter = adapter

@@ -8,13 +8,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.brxq.gyminstructor.R
 
 
 import com.brxq.gyminstructor.databinding.FragmentExerciseBinding
 import com.brxq.gyminstructor.model.CurrentProgress
+import com.brxq.gyminstructor.model.Exercise
 
 import com.brxq.gyminstructor.model.TrainingDays
 import com.brxq.gyminstructor.ui.exercise.calendar.CalendarAdapter
@@ -61,7 +64,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
 
         binding?.calendarRecyclerView?.layoutManager = calendarLayoutManage
 
-        viewModel.getCurrentProgress().observe(viewLifecycleOwner){
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
             calendarAdapter?.setData(it.day)
         }
 
@@ -79,7 +82,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
 
         //Setting current day exercises
 
-        viewModel.getCurrentProgress().observe(viewLifecycleOwner){
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
             setExerciseForToday(it)
         }
 
@@ -87,7 +90,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     }
 
 
-    private fun setExerciseForToday(curr : CurrentProgress) {
+    private fun setExerciseForToday(curr: CurrentProgress) {
         viewModel.getTodayExercise(
             curr.program_id,
             curr.day,
@@ -99,7 +102,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     }
 
     override fun onDateClick(pos: Int) {
-        viewModel.getCurrentProgress().observe(viewLifecycleOwner){ curr ->
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) { curr ->
             checkNotNull(curr)
             curr.day = pos
             calendarAdapter?.setData(pos)
@@ -110,7 +113,22 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     }
 
     override fun onFinishClick(pos: Int) {
-        TODO("Not yet implemented")
+        val itemClickedOn = exerciseAdapter!!.listOfExercisesHasLoad[pos].exercise
+        itemClickedOn.isComplete = 1
+
+        val itemView =
+            binding?.exerciseRecyclerView?.findViewHolderForAdapterPosition(pos)?.itemView
+        checkNotNull(itemView)
+        decorateItem(itemView)
+
+        viewModel.finishExercise(itemClickedOn)
+    }
+
+    override fun decorateItem(itemView: View) {
+        itemView.alpha = 0.4f
+        val finishItem = itemView.findViewById<RadioButton>(R.id.finishButton)
+        finishItem.isClickable = false
+        finishItem.isChecked = true
     }
 
 }

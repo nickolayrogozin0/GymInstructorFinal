@@ -2,6 +2,7 @@ package com.brxq.gyminstructor.repository
 
 import androidx.lifecycle.LiveData
 import com.brxq.gyminstructor.model.CurrentProgress
+import com.brxq.gyminstructor.model.Exercise
 import com.brxq.gyminstructor.model.ExerciseHasLoad
 import com.brxq.gyminstructor.room.ProgramExerciseDatabase
 import javax.inject.Inject
@@ -35,6 +36,10 @@ class ExerciseRepository @Inject constructor(
 
     suspend fun updateCurrentProgress(currentProgress: CurrentProgress) {
         database.exerciseDao().updateCurrentProgress(currentProgress)
+    }
+
+    suspend fun finishExercise(exercise: Exercise) {
+        database.exerciseDao().finishExercise(exercise)
     }
 
 }

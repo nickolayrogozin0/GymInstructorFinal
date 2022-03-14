@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brxq.gyminstructor.model.CurrentProgress
+import com.brxq.gyminstructor.model.Exercise
 import com.brxq.gyminstructor.model.ExerciseHasLoad
 import com.brxq.gyminstructor.repository.ExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -41,6 +42,12 @@ class ExerciseViewModel @Inject constructor(
     fun updateCurrentProgress(currentProgress: CurrentProgress){
         viewModelScope.launch(Dispatchers.IO) {
             repository.updateCurrentProgress(currentProgress)
+        }
+    }
+
+    fun finishExercise(exercise: Exercise){
+        viewModelScope.launch {
+            repository.finishExercise(exercise)
         }
     }
 

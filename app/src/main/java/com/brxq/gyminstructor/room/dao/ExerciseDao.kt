@@ -26,4 +26,7 @@ interface ExerciseDao{
 
     @Update
     suspend fun updateCurrentProgress(currentProgress: CurrentProgress)
+
+    @Update
+    suspend fun finishExercise(exercise: Exercise)
 }
