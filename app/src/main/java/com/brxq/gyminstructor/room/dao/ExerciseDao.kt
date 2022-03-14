@@ -16,8 +16,14 @@ interface ExerciseDao{
 
     @Transaction
     @Query("SELECT * FROM Exercise WHERE program_id = :id AND day = :day AND week = :week AND isComplete = 0")
-    fun getToday(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>>
+    suspend fun getToday(id : Int, day : Int, week : Int) : List<ExerciseHasLoad>
+
+//    @Query("SELECT * FROM CurrentProgress")
+//    fun getCurrentProgress() : LiveData<CurrentProgress>
 
     @Query("SELECT * FROM CurrentProgress")
-    fun getCurrentProgress() : LiveData<CurrentProgress>
+    suspend fun getCurrentProgress() : CurrentProgress
+
+    @Update
+    suspend fun updateCurrentProgress(currentProgress: CurrentProgress)
 }

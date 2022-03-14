@@ -124,4 +124,8 @@ class CalendarAdapter(
         currentDayIndex = pos
         notifyDataSetChanged()
     }
+
+    fun getCurrentDay() : Int {
+        return currentDayIndex
+    }
 }

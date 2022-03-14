@@ -25,7 +25,6 @@ object DatabaseModule {
             ProgramExerciseDatabase::class.java,
             EXERCISE_DATABASE
         )
-            .fallbackToDestructiveMigration()
             .createFromAsset("database/mydb.db")
             .build()
     }

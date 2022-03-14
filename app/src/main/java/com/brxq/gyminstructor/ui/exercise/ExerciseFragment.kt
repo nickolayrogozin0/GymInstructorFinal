@@ -1,6 +1,7 @@
 package com.brxq.gyminstructor.ui.exercise
 
 import android.os.Bundle
+import android.util.Log
 
 
 import androidx.fragment.app.Fragment
@@ -20,14 +21,13 @@ import com.brxq.gyminstructor.ui.exercise.calendar.CalendarAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick, ExerciseAdapter.OnExerciseClick {
+class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
+    ExerciseAdapter.OnExerciseClick {
 
     private val viewModel: ExerciseViewModel by viewModels()
     private var binding: FragmentExerciseBinding? = null
-    private var calendarAdapter : CalendarAdapter? = null
-    private var exerciseAdapter : ExerciseAdapter? = null
-
-    private var currentProgress : CurrentProgress? = null
+    private var calendarAdapter: CalendarAdapter? = null
+    private var exerciseAdapter: ExerciseAdapter? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,91 +35,82 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick, Exe
     ): View? {
         binding = FragmentExerciseBinding.inflate(layoutInflater)
 
-        //Init current progress
-
-
-
         //Init calendar
 
-        calendarAdapter = CalendarAdapter(this,
-                TrainingDays(
-                    0,
-                    0,
-                    1,
-                    0,
-                    1,
-                    0,
-                    1,
-                    0,
-                )
+        calendarAdapter = CalendarAdapter(
+            this,
+            TrainingDays(
+                0,
+                0,
+                1,
+                0,
+                1,
+                0,
+                1,
+                0,
             )
+        )
         binding?.calendarRecyclerView?.adapter = calendarAdapter
 
-        val calendarLayoutManage = object : LinearLayoutManager(requireContext(), HORIZONTAL, false){
-            override fun canScrollHorizontally(): Boolean {
-                return false
+        val calendarLayoutManage =
+            object : LinearLayoutManager(requireContext(), HORIZONTAL, false) {
+                override fun canScrollHorizontally(): Boolean {
+                    return false
+                }
             }
-        }
 
         binding?.calendarRecyclerView?.layoutManager = calendarLayoutManage
 
-        //
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner){
+            calendarAdapter?.setData(it.day)
+        }
 
         //Init exercise recycler
 
         exerciseAdapter = ExerciseAdapter(requireContext(), this)
         binding?.exerciseRecyclerView?.adapter = exerciseAdapter
 
-        val exerciseLayoutManager = object : LinearLayoutManager(requireContext(), VERTICAL, false){
+        val exerciseLayoutManager =
+            object : LinearLayoutManager(requireContext(), VERTICAL, false) {
 
-        }
+            }
 
         binding?.exerciseRecyclerView?.layoutManager = exerciseLayoutManager
 
         //Setting current day exercises
 
-        viewModel.getCurrentProgress()?.observe(viewLifecycleOwner){ currentProgress ->
-            if (currentProgress != null){
-                viewModel.getTodayExercise(
-                    currentProgress.id,
-                    currentProgress.day,
-                    currentProgress.week
-                )?.observe(viewLifecycleOwner){ list ->
-                    if (list != null){
-                        exerciseAdapter!!.setData(list)
-                    }else {
-                        Toast.makeText(requireContext(), "LIST EMPTY", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }else {
-                Toast.makeText(requireContext(), "PROGRESS NULL", Toast.LENGTH_SHORT).show()
-            }
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner){
+            setExerciseForToday(it)
         }
 
-//        viewModel.getTodayExercise()?.observe(viewLifecycleOwner){
-//            if (it!=null){
-//                exerciseAdapter!!.setData(it)
-//            }else {
-//                Toast.makeText(requireContext(), "NO EXERCISE TODAY", Toast.LENGTH_SHORT).show()
-//            }
-//        }
-
-
-//        exerciseAdapter?.setData(exerciseList)
-//        viewModel.allExercise.observe(viewLifecycleOwner) {
-//            exerciseAdapter?.setData(it)
-//        }
         return binding?.root
     }
 
+
+    private fun setExerciseForToday(curr : CurrentProgress) {
+        viewModel.getTodayExercise(
+            curr.program_id,
+            curr.day,
+            curr.week
+        ).observe(viewLifecycleOwner) { list ->
+            checkNotNull(list)
+            exerciseAdapter?.setData(list)
+        }
+    }
+
     override fun onDateClick(pos: Int) {
-        calendarAdapter?.setData(pos)
-        calendarAdapter?.notifyDataSetChanged()
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner){ curr ->
+            checkNotNull(curr)
+            curr.day = pos
+            calendarAdapter?.setData(pos)
+            viewModel.updateCurrentProgress(curr)
+            setExerciseForToday(curr)
+        }
+
     }
 
     override fun onFinishClick(pos: Int) {
         TODO("Not yet implemented")
     }
-
 
 }

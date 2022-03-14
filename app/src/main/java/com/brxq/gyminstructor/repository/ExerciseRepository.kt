@@ -1,8 +1,6 @@
 package com.brxq.gyminstructor.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.ExerciseHasLoad
 import com.brxq.gyminstructor.room.ProgramExerciseDatabase
@@ -14,18 +12,29 @@ class ExerciseRepository @Inject constructor(
 
     val allExercise = database.exerciseDao().getAll()
 
-    private var today : LiveData<List<ExerciseHasLoad>>? = null
+    private var todayExercise : List<ExerciseHasLoad>? = null
 
-    fun getTodayExercise(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>>{
-        today = database.exerciseDao().getToday(id, day, week)
-        return today as LiveData<List<ExerciseHasLoad>>
+    suspend fun getTodayExercise(id : Int, day : Int, week : Int) : List<ExerciseHasLoad>?{
+        todayExercise = database.exerciseDao().getToday(id, day, week)
+        return todayExercise
     }
 
-    private var progress : LiveData<CurrentProgress>? = null
+//    private var currentProgress : LiveData<CurrentProgress>? = null
+//
+//    fun getCurrentProgress(): LiveData<CurrentProgress>? {
+//        currentProgress = database.exerciseDao().getCurrentProgress()
+//        return currentProgress
+//    }
 
-    fun getCurrentProgress(): LiveData<CurrentProgress>? {
-        progress = database.exerciseDao().getCurrentProgress()
-        return progress
+    private var currentProgress : CurrentProgress? = null
+
+    suspend fun getCurrentProgress(): CurrentProgress? {
+        currentProgress = database.exerciseDao().getCurrentProgress()
+        return currentProgress
+    }
+
+    suspend fun updateCurrentProgress(currentProgress: CurrentProgress) {
+        database.exerciseDao().updateCurrentProgress(currentProgress)
     }
 
 }

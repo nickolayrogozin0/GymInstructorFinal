@@ -1,6 +1,5 @@
 package com.brxq.gyminstructor.ui.exercise
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +8,7 @@ import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.ExerciseHasLoad
 import com.brxq.gyminstructor.repository.ExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,22 +20,30 @@ class ExerciseViewModel @Inject constructor(
 
     val allExercise = repository.allExercise
 
-    private var today : LiveData<List<ExerciseHasLoad>>? = null
+    private val todayExercise = MutableLiveData<List<ExerciseHasLoad>>()
 
-    fun getTodayExercise(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>>? {
+    fun getTodayExercise(id : Int, day : Int, week : Int) : LiveData<List<ExerciseHasLoad>> {
         viewModelScope.launch {
-           today = repository.getTodayExercise(id, day, week)
+           todayExercise.value = repository.getTodayExercise(id, day, week)
         }
-       return today
+       return todayExercise
     }
 
-    private var progress : LiveData<CurrentProgress>? = null
+    private val currentProgress = MutableLiveData<CurrentProgress>()
 
-    fun getCurrentProgress() : LiveData<CurrentProgress>? {
+    fun getCurrentProgress() : LiveData<CurrentProgress> {
         viewModelScope.launch {
-            progress = repository.getCurrentProgress()
+            currentProgress.value = repository.getCurrentProgress()
         }
-        return progress
+        return currentProgress
     }
+
+    fun updateCurrentProgress(currentProgress: CurrentProgress){
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateCurrentProgress(currentProgress)
+        }
+    }
+
+
 
 }
