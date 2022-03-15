@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.Exercise
 import com.brxq.gyminstructor.model.ExerciseHasLoad
+import com.brxq.gyminstructor.model.Program
 import com.brxq.gyminstructor.repository.ExerciseRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +20,10 @@ class ExerciseViewModel @Inject constructor(
     private val repository: ExerciseRepository
 ) : ViewModel() {
 
+    val allProgram = repository.getAllPrograms()
     val allExercise = repository.allExercise
+
+    private val currentProgram = MutableLiveData<Program>()
 
     private val todayExercise = MutableLiveData<List<ExerciseHasLoad>>()
 
@@ -49,6 +53,13 @@ class ExerciseViewModel @Inject constructor(
         viewModelScope.launch {
             repository.finishExercise(exercise)
         }
+    }
+
+    fun getProgramById(id : Int) : LiveData<Program>{
+        viewModelScope.launch {
+            currentProgram.value = repository.getProgramById(id)
+        }
+        return currentProgram
     }
 
 

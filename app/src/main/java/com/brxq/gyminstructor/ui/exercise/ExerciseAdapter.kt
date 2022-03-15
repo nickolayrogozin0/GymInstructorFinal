@@ -19,11 +19,11 @@ class ExerciseAdapter(
     //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
 //    так как абсолютное большинство программ попадают в данный диапазон
     private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
-    var listOfExercisesHasLoad = listOf<ExerciseHasLoad>()
+    val listOfExercisesHasLoad = mutableListOf<ExerciseHasLoad>()
 
     interface OnExerciseClick {
         fun onFinishClick(pos: Int)
-        fun decorateItem(itemView: View)
+//        fun decorateItem(itemView: View)
     }
 
     class ViewHolder(
@@ -52,14 +52,10 @@ class ExerciseAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = listOfExercisesHasLoad[position]
-
         holder.title.text = currentItem.exercise.exercise_title
         holder.letter.text = listOfLetters[position]
-
-        if (listOfExercisesHasLoad[position].exercise.isComplete == 1) onExerciseClick.decorateItem(
-            holder.itemView
-        )
-
+        holder.finishButton.isChecked = false
+        holder.finishButton.isClickable = true
         val adapter = LoadAdapter()
         holder.childRecycler.adapter = adapter
         holder.childRecycler.layoutManager =
@@ -73,8 +69,14 @@ class ExerciseAdapter(
     }
 
     fun setData(it: List<ExerciseHasLoad>) {
-        listOfExercisesHasLoad = it
+        listOfExercisesHasLoad.clear()
+        listOfExercisesHasLoad.addAll(it)
         notifyDataSetChanged()
+    }
+
+    fun updateData(pos: Int) {
+        listOfExercisesHasLoad.removeAt(pos)
+        notifyItemRemoved(pos)
     }
 
 }

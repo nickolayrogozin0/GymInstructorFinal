@@ -68,6 +68,11 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
             calendarAdapter?.setData(it.day)
         }
 
+        // Init program card
+
+        initProgramBlock()
+
+
         //Init exercise recycler
 
         exerciseAdapter = ExerciseAdapter(requireContext(), this)
@@ -89,6 +94,46 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
         return binding?.root
     }
 
+
+    private fun initProgramBlock() {
+        changeTitle()
+        changeBlock()
+        changeProgressBarAndCompleted()
+    }
+
+    private fun changeTitle() {
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) { current ->
+            viewModel.getProgramById(current.program_id).observe(viewLifecycleOwner) { program ->
+                binding?.programTitleTV?.text = program.program_title
+                binding?.programBlockTV
+            }
+        }
+    }
+
+    private fun changeProgressBarAndCompleted() {
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) { current ->
+            viewModel.getProgramById(current.program_id)
+                .observe(viewLifecycleOwner) { program ->
+                    binding?.programProgressBar?.setProgress(
+                        current.week + 1 * (100 / program.weeks) * current.week,
+                        true
+                    )
+
+                    binding?.programCompletedTV?.text = getString(
+                        R.string.program_completed,
+                        (current.week + 1 / program.weeks) *
+                                (100 / program.weeks)
+                    )
+                }
+        }
+    }
+
+    private fun changeBlock() {
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
+            binding?.programBlockTV?.text =
+                getString(R.string.program_block, it.week + 1 / 4 + 1)
+        }
+    }
 
     private fun setExerciseForToday(curr: CurrentProgress) {
         viewModel.getTodayExercise(
@@ -115,20 +160,15 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     override fun onFinishClick(pos: Int) {
         val itemClickedOn = exerciseAdapter!!.listOfExercisesHasLoad[pos].exercise
         itemClickedOn.isComplete = 1
-
-        val itemView =
-            binding?.exerciseRecyclerView?.findViewHolderForAdapterPosition(pos)?.itemView
-        checkNotNull(itemView)
-        decorateItem(itemView)
-
         viewModel.finishExercise(itemClickedOn)
+        exerciseAdapter?.updateData(pos)
     }
 
-    override fun decorateItem(itemView: View) {
-        itemView.alpha = 0.4f
-        val finishItem = itemView.findViewById<RadioButton>(R.id.finishButton)
-        finishItem.isClickable = false
-        finishItem.isChecked = true
-    }
+//    override fun decorateItem(itemView: View) {
+//        itemView.alpha = 0.4f
+//        val finishItem = itemView.findViewById<RadioButton>(R.id.finishButton)
+//        finishItem.isClickable = false
+//        finishItem.isChecked = true
+//    }
 
 }

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.Exercise
 import com.brxq.gyminstructor.model.ExerciseHasLoad
+import com.brxq.gyminstructor.model.Program
 import com.brxq.gyminstructor.room.ProgramExerciseDatabase
 import javax.inject.Inject
 
@@ -40,6 +41,14 @@ class ExerciseRepository @Inject constructor(
 
     suspend fun finishExercise(exercise: Exercise) {
         database.exerciseDao().finishExercise(exercise)
+    }
+
+    fun getAllPrograms() : LiveData<List<Program>>{
+        return database.programDao().getAllPrograms()
+    }
+
+    suspend fun getProgramById(id : Int) :Program{
+        return database.programDao().getProgramById(id)
     }
 
 }
