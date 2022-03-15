@@ -1,5 +1,6 @@
 package com.brxq.gyminstructor.ui.exercise
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -62,6 +63,28 @@ class ExerciseViewModel @Inject constructor(
         return currentProgram
     }
 
+    fun changeWeek(i: Int) : LiveData<CurrentProgress>{
+        if (i < 0){
+
+            if (currentProgress.value!!.week - i >= 0){
+                currentProgress.value!!.week--
+            }
+
+        }else {
+
+            if (currentProgress.value!!.week + i < currentProgram.value!!.weeks){
+                currentProgress.value!!.week++
+            }
+
+        }
+
+        updateCurrentProgress(currentProgress.value!!)
+
+        Log.i("CURRENT_WEEK", currentProgress.value!!.week.toString())
+
+        return currentProgress
+
+    }
 
 
 }

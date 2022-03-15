@@ -40,6 +40,48 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
 
         //Init calendar
 
+        initCalendarAdapter()
+
+        // Init program card
+
+        initProgramBlock()
+
+
+        // Init exercise recycler
+
+        initExerciseRecycler()
+
+        // Setting current day exercises
+
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
+            setExerciseForToday(it)
+        }
+
+        // Set click listeners for week change
+
+        binding?.left?.setOnClickListener {
+            viewModel.changeWeek(-1)
+            changeWeek()
+            initProgramBlock()
+        }
+
+        binding?.right?.setOnClickListener {
+            viewModel.changeWeek(1)
+            changeWeek()
+            initProgramBlock()
+        }
+
+        return binding?.root
+    }
+
+    private fun changeWeek() {
+        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
+            binding?.currentWeekTV?.text =
+                getString(R.string.calendar_week, it.week + 1)
+        }
+    }
+
+    private fun initCalendarAdapter() {
         calendarAdapter = CalendarAdapter(
             this,
             TrainingDays(
@@ -68,13 +110,10 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
             calendarAdapter?.setData(it.day)
         }
 
-        // Init program card
+        changeWeek()
+    }
 
-        initProgramBlock()
-
-
-        //Init exercise recycler
-
+    private fun initExerciseRecycler() {
         exerciseAdapter = ExerciseAdapter(requireContext(), this)
         binding?.exerciseRecyclerView?.adapter = exerciseAdapter
 
@@ -84,14 +123,6 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
             }
 
         binding?.exerciseRecyclerView?.layoutManager = exerciseLayoutManager
-
-        //Setting current day exercises
-
-        viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
-            setExerciseForToday(it)
-        }
-
-        return binding?.root
     }
 
 
