@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import androidx.room.Transaction
+import androidx.room.Update
 import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.Program
 import com.brxq.gyminstructor.model.ProgramHasExercise
@@ -26,5 +27,8 @@ interface ProgramDao {
 
     @Query("SELECT * FROM TrainingDays")
     suspend fun getTrainingDays() : TrainingDays
+
+    @Update
+    suspend fun updateSelectedProgram(currentProgress: CurrentProgress)
 
 }

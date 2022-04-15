@@ -1,15 +1,13 @@
 package com.brxq.gyminstructor.ui.exercise
 
 import android.os.Bundle
-import android.util.Log
 
 
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioButton
-import android.widget.Toast
+
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.brxq.gyminstructor.R
@@ -17,7 +15,7 @@ import com.brxq.gyminstructor.R
 
 import com.brxq.gyminstructor.databinding.FragmentExerciseBinding
 import com.brxq.gyminstructor.model.CurrentProgress
-import com.brxq.gyminstructor.model.Exercise
+
 
 import com.brxq.gyminstructor.model.TrainingDays
 import com.brxq.gyminstructor.ui.exercise.calendar.CalendarAdapter
@@ -38,26 +36,13 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     ): View? {
         binding = FragmentExerciseBinding.inflate(layoutInflater)
 
-        //Init calendar
-
         initCalendarAdapter()
-
-        // Init program card
-
         initProgramBlock()
-
-
-        // Init exercise recycler
-
         initExerciseRecycler()
-
-        // Setting current day exercises
 
         viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
             setExerciseForToday(it)
         }
-
-        // Set click listeners for week change
 
         binding?.left?.setOnClickListener {
             viewModel.changeWeek(-1)
@@ -77,12 +62,13 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     private fun changeWeek() {
         viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
             binding?.currentWeekTV?.text =
-                getString(R.string.calendar_week, it.week + 1)
+                getString(R.string.exercise_calendar_current_week, it.week + 1)
         }
     }
 
     private fun initCalendarAdapter() {
         calendarAdapter = CalendarAdapter(
+            requireContext(),
             this,
             TrainingDays(
                 0,
@@ -151,7 +137,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
                     )
 
                     binding?.programCompletedTV?.text = getString(
-                        R.string.program_completed,
+                        R.string.exercise_block_completed,
                         (current.week + 1 / program.weeks) *
                                 (100 / program.weeks)
                     )
@@ -162,7 +148,7 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     private fun changeBlock() {
         viewModel.getCurrentProgress().observe(viewLifecycleOwner) {
             binding?.programBlockTV?.text =
-                getString(R.string.program_block, it.week + 1 / 4 + 1)
+                getString(R.string.exercise_block_block_number, it.week + 1 / 4 + 1)
         }
     }
 
@@ -194,12 +180,5 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
         viewModel.finishExercise(itemClickedOn)
         exerciseAdapter?.updateData(pos)
     }
-
-//    override fun decorateItem(itemView: View) {
-//        itemView.alpha = 0.4f
-//        val finishItem = itemView.findViewById<RadioButton>(R.id.finishButton)
-//        finishItem.isClickable = false
-//        finishItem.isChecked = true
-//    }
 
 }

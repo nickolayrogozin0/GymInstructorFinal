@@ -19,6 +19,49 @@
         <entry key="..\:/Users/brxq/AndroidStudioProjects/GymInstructorFinal/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/brxq/AndroidStudioProjects/GymInstructorFinal/app/src/main/res/layout/calendar.xml" value="0.9" />
         <entry key="..\:/Users/brxq/AndroidStudioProjects/GymInstructorFinal/app/src/main/res/layout/fragment_exercise.xml" value="0.4424019607843137" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/barbell.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/black_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/blue.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/blue_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/button_rect.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/circle.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/custom_button_back.xml" value="0.2185" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/green.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/green_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_academic_cap.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_book.xml" value="0.222" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_check.xml" value="0.222" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_credit_card.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_notification_bell_off.xml" value="0.1395" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/ic_send.xml" value="0.222" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/input_rect.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/nav_bar_selector.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/red.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/red_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/white_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/yellow.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/drawable/yellow_plate.xml" value="0.14" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/activity_main.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/barbell_item.xml" value="0.9" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/calendar.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/child.xml" value="0.5" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/copy.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_add_edit_note.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_barbell_calculator.xml" value="0.33" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_exercise.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_n_d_a.xml" value="0.33" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_notes.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_program.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_settings.xml" value="0.25" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_statistics.xml" value="0.33" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_terms_of_use.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/fragment_user.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/item.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/note_rv_item.xml" value="0.5" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/program_item.xml" value="0.5" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/statisctics_program_chart_fragment.xml" value="0.18802083333333333" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/layout/statistics_activity_chart_fragment.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/brxq/Desktop/GymInstructorFinal/app/src/main/res/xml/root_preferences.xml" value="0.25" />
         <entry key="..\:/Users/brxq/Documents/gi_main_fragment/app/src/main/res/layout/item.xml" value="0.5" />
       </map>
     </option>

@@ -1,5 +1,6 @@
 package com.brxq.gyminstructor.ui.exercise.load
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.brxq.gyminstructor.model.Load
 import com.brxq.gyminstructor.R
 
-class LoadAdapter : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {
+class LoadAdapter(
+    private val context : Context
+) : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {
 
     var listOfLoads = emptyList<Load>()
 
@@ -31,11 +34,11 @@ class LoadAdapter : RecyclerView.Adapter<LoadAdapter.ViewHolder>() {
         //в нулевой позиции вместо нагрузки выводятся названия колонок
         //в будущем заменить на более оптимальный вариант
         if (position == 0){
-            holder.sets.text = "Sets"
-            holder.reps.text = "Reps"
-            holder.rpe.text = "Rpe "
-            holder.load.text = "Load"
-            holder.intensity.text = "%1RM"
+            holder.sets.text = context.resources.getString(R.string.exercise_item_sets)
+            holder.reps.text = context.resources.getString(R.string.exercise_item_reps)
+            holder.rpe.text = context.resources.getString(R.string.exercise_item_RPE)
+            holder.load.text = context.resources.getString(R.string.exercise_item_load)
+            holder.intensity.text = context.resources.getString(R.string.exercise_item_intensity)
         }else{
             holder.sets.text = listOfLoads[position-1].sets.toString()
             holder.reps.text = listOfLoads[position-1].reps.toString()

@@ -17,12 +17,99 @@
         tools:layout="@layout/fragment_program" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.brxq.gyminstructor.fragments.StatisticsFragment"
+        android:name="com.brxq.gyminstructor.ui.statistics.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.brxq.gyminstructor.fragments.UserFragment"
+        android:name="com.brxq.gyminstructor.ui.user.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_barbellCalculatorFragment"
+            app:destination="@id/barbellCalculatorFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_NDAFragment"
+            app:destination="@id/NDAFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_termsOfUseFragment"
+            app:destination="@id/termsOfUseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NDAFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.items.NDAFragment"
+        android:label="fragment_n_d_a"
+        tools:layout="@layout/fragment_n_d_a" >
+        <action
+            android:id="@+id/action_NDAFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsOfUseFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.items.TermsOfUseFragment"
+        android:label="fragment_terms_of_use"
+        tools:layout="@layout/fragment_terms_of_use" >
+        <action
+            android:id="@+id/action_termsOfUseFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/barbellCalculatorFragment"
+        android:name="com.brxq.gyminstructor.ui.user.calculators.BarbellCalculatorFragment"
+        android:label="fragment_barbell_calculator"
+        tools:layout="@layout/fragment_barbell_calculator" >
+        <action
+            android:id="@+id/action_barbellCalculatorFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.brxq.gyminstructor.ui.user.notes.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_addEditNoteFragment2"
+            app:destination="@id/addEditNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditNoteFragment"
+        android:name="com.brxq.gyminstructor.ui.user.notes.AddEditNoteFragment"
+        android:label="fragment_add_edit_note"
+        tools:layout="@layout/fragment_add_edit_note" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="body"
+            app:argType="string" />
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_addEditNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+
+
 </navigation>

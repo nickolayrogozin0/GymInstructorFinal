@@ -7,66 +7,76 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        android:orientation="horizontal"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/setsTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/source_sans_pro_semibold"
-            android:gravity="center_horizontal"
-            android:text="@string/main_sets"
+            android:gravity="center"
+            android:text="@string/exercise_item_sets"
             android:textColor="#FFFFFF"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/repsTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/source_sans_pro_semibold"
-            android:gravity="center_horizontal"
-            android:text="@string/main_reps"
+            android:gravity="center"
+            android:text="@string/exercise_item_reps"
             android:textColor="#FFFFFF"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/rpeTV"
+            app:layout_constraintStart_toEndOf="@+id/setsTV"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/rpeTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/source_sans_pro_semibold"
-            android:gravity="center_horizontal"
-            android:text="@string/main_RPE"
+            android:gravity="center"
+            android:text="@string/exercise_item_RPE"
             android:textColor="#FFFFFF"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/loadTV"
+            app:layout_constraintStart_toEndOf="@+id/repsTV"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/loadTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
             android:layout_weight="1"
             android:fontFamily="@font/source_sans_pro_semibold"
             android:gravity="center"
-            android:text="@string/main_load"
+            android:text="@string/exercise_item_load"
             android:textColor="#FFFFFF"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/intensityTV"
+            app:layout_constraintStart_toEndOf="@+id/rpeTV"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/intensityTV"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/source_sans_pro_semibold"
             android:gravity="center"
-            android:text="@string/main_int"
+            android:text="@string/exercise_item_intensity"
             android:textColor="#FFFFFF"
-            android:textSize="10sp" />
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

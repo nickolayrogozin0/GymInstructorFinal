@@ -1,6 +1,7 @@
 package com.brxq.gyminstructor.ui.exercise
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +17,12 @@ class ExerciseAdapter(
     private val context: Context,
     private val onExerciseClick: OnExerciseClick
 ) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
-    //    На данный момент подразумевается, что максимальное количество упражнений в один день - 8,
-//    так как абсолютное большинство программ попадают в данный диапазон
+
     private val listOfLetters = listOf("A", "B", "C", "D", "E", "F", "G", "H")
     val listOfExercisesHasLoad = mutableListOf<ExerciseHasLoad>()
 
     interface OnExerciseClick {
         fun onFinishClick(pos: Int)
-//        fun decorateItem(itemView: View)
     }
 
     class ViewHolder(
@@ -52,11 +51,40 @@ class ExerciseAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = listOfExercisesHasLoad[position]
-        holder.title.text = currentItem.exercise.exercise_title
+
+
+
+        Log.i(
+            "STRING_ID",
+            context.resources.getIdentifier(
+                listOfExercisesHasLoad[position].exercise.exercise_title,
+                "string",
+                context.packageName
+            ).toString()
+        )
+
+        if (
+            context.resources.getIdentifier(
+                listOfExercisesHasLoad[position].exercise.exercise_title,
+                "string",
+                context.packageName
+            ) != 0
+        ) {
+            holder.title.text =
+                context.resources.getString(
+                    context.resources.getIdentifier(
+                        listOfExercisesHasLoad[position].exercise.exercise_title,
+                        "string",
+                        context.packageName
+                    )
+                )
+        }
+
+
         holder.letter.text = listOfLetters[position]
         holder.finishButton.isChecked = false
         holder.finishButton.isClickable = true
-        val adapter = LoadAdapter()
+        val adapter = LoadAdapter(context)
         holder.childRecycler.adapter = adapter
         holder.childRecycler.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

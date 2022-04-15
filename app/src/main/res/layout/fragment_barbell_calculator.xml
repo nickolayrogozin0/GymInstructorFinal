@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context="ui.user.calculators.BarbellCalculatorFragment">
+
+    <TextView
+        android:id="@+id/calculator_barbell_lable_2"
+        android:layout_width="295dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/calculator_barbell_label_2"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_1" />
+
+    <TextView
+        android:id="@+id/calculator_barbell_lable_0"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:text="@string/calculator_barbell_label_0"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintStart_toEndOf="@+id/view"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/calculator_barbell_lable_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="17dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:text="@string/calculator_barbell_label_1"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_0" />
+
+    <TextView
+        android:id="@+id/calculator_barbell_lable_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginBottom="220dp"
+        android:text="@string/calculator_barbell_label_3"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/barbellWeightInput"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:background="@drawable/input_rect"
+        android:digits="0123456789."
+        android:ems="10"
+        android:fontFamily="@font/source_sans_pro"
+        android:hint="272.5"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:textColor="#FFFFFF"
+        android:textColorHighlight="#80FFFFFF"
+        android:textColorHint="#80FFFFFF"
+        android:textColorLink="#80FFFFFF"
+        android:textCursorDrawable="@color/white50"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_3" />
+
+    <Button
+        android:id="@+id/barbellCalculate"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:alpha="216"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/source_sans_pro_bold"
+        android:gravity="center"
+        android:text="@string/calculator_barbell_label_button"
+        android:textColor="@color/background"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barbellWeightInput" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/view6"
+        android:layout_width="0dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="135dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="136dp"
+        android:background="@drawable/barbell"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/bar"
+        android:layout_width="10dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="123dp"
+        android:layout_marginBottom="123dp"
+        android:background="@drawable/barbell"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate0"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/bar"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate1"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate0"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate2"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate1"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate3"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate2"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate4"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate3"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate5"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate4"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate6"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate5"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate7"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate6"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <View
+        android:id="@+id/plate8"
+        android:layout_width="30dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="73dp"
+        android:layout_marginBottom="73dp"
+        app:layout_constraintBottom_toTopOf="@+id/calculator_barbell_lable_3"
+        app:layout_constraintStart_toEndOf="@id/plate7"
+        app:layout_constraintTop_toBottomOf="@+id/calculator_barbell_lable_2" />
+
+    <TextView
+        android:id="@+id/plate0Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/bar"
+        app:layout_constraintTop_toTopOf="@id/plate0"
+        app:layout_constraintBottom_toBottomOf="@id/plate0"/>
+
+    <TextView
+        android:id="@+id/plate1Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate0Text"
+        app:layout_constraintTop_toTopOf="@id/plate1"
+        app:layout_constraintBottom_toBottomOf="@id/plate1" />
+
+    <TextView
+        android:id="@+id/plate2Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate1Text"
+        app:layout_constraintTop_toTopOf="@id/plate2"
+        app:layout_constraintBottom_toBottomOf="@id/plate2" />
+
+    <TextView
+        android:id="@+id/plate3Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate2Text"
+        app:layout_constraintTop_toTopOf="@id/plate3"
+        app:layout_constraintBottom_toBottomOf="@id/plate3" />
+
+    <TextView
+        android:id="@+id/plate4Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate3Text"
+        app:layout_constraintTop_toTopOf="@id/plate4"
+        app:layout_constraintBottom_toBottomOf="@id/plate4" />
+
+    <TextView
+        android:id="@+id/plate5Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate4Text"
+        app:layout_constraintTop_toTopOf="@id/plate5"
+        app:layout_constraintBottom_toBottomOf="@id/plate5" />
+
+    <TextView
+        android:id="@+id/plate6Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate5Text"
+        app:layout_constraintTop_toTopOf="@id/plate6"
+        app:layout_constraintBottom_toBottomOf="@id/plate6" />
+
+    <TextView
+        android:id="@+id/plate7Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate6Text"
+        app:layout_constraintTop_toTopOf="@id/plate7"
+        app:layout_constraintBottom_toBottomOf="@id/plate7" />
+
+    <TextView
+        android:id="@+id/plate8Text"
+        android:layout_width="30dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="3dp"
+        android:fontFamily="@font/source_sans_pro"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@id/plate7Text"
+        app:layout_constraintTop_toTopOf="@id/plate8"
+        app:layout_constraintBottom_toBottomOf="@id/plate8" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="45dp"
+        android:backgroundTint="#80FFFFFF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
