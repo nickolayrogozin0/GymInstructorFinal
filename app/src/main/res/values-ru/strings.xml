@@ -1,0 +1,132 @@
+<resources>
+    <string name="app_name">GymInstructor</string>
+
+    <!-- Exercise Titles -->
+
+    <string name="ex_squat">Присед</string>
+    <string name="ex_bench_press">Жим лежа</string>
+    <string name="ex_deadlift">Становая тяга</string>
+    <string name="ex_bench_press_mid_grip">Жим лежа(средний хват)</string>
+    <string name="ex_overhead_press">Жим стоя</string>
+    <string name="ex_biceps_curls">Бицепс с гантелями</string>
+    <string name="ex_hammer_curls">Молотки с гантелями</string>
+    <string name="ex_bench_press_feet_up">Военный жим лежа</string>
+    <!-- Exercise -->
+
+    <string name="exercise_calendar_current_week">Неделя %1$d</string>
+    <string name="exercise_calendar_mon">Пон</string>
+    <string name="exercise_calendar_tue">Втр</string>
+    <string name="exercise_calendar_wen">Срд</string>
+    <string name="exercise_calendar_thu">Чтв</string>
+    <string name="exercise_calendar_fri">Птн</string>
+    <string name="exercise_calendar_sat">Суб</string>
+    <string name="exercise_calendar_sun">Вос</string>
+
+    <string name="exercise_block_block_number">Блок %1$d</string>
+    <string name="exercise_block_progress">Прогресс</string>
+    <string name="exercise_block_completed">%1$d%% Выполнено</string>
+
+    <string name="exercise_item_sets">Подходы</string>
+    <string name="exercise_item_reps">Повторы</string>
+    <string name="exercise_item_RPE">ОФН</string>
+    <string name="exercise_item_load">Нагрузка</string>
+    <string name="exercise_item_intensity">Процент</string>
+
+    <!-- Program Library -->
+    <string name="program_library_title">Библиотека программ</string>
+    <string name="program_library_item_learn_more">Узнать больше</string>
+    <string name="program_library_item_select_program">Выбрать программу</string>
+    <string name="program_library_item_days_a_week">%1$d дней в неделю</string>
+    <string name="program_library_item_weeks">%1$d недель</string>
+    <string name="program_library_difficulty">Сложность</string>
+    <string name="program_library_difficulty_beginner">Новичок</string>
+    <string name="program_library_difficulty_expert">Опытный</string>
+
+    <!-- Statistics -->
+    <string name="statistics_trainings_freq">%1$d раз в неделю</string>
+    <string name="statistics_remainder_off">Уведомления выкл.</string>
+    <string name="statistics_remainder_onn">Уведомления вкл.</string>
+    <string name="statistics_all_training_days_count">%1$d раз</string>
+    <string name="statistics_missed_training_days_count">%1$d%% пропусокв</string>
+    <string name="statistics_percent_visits_to_misses_this_month">%1$d%% в месяц</string>
+    <string name="statistics_percent_visits_to_misses_total">%1$d%% всего</string>
+
+    <!-- Settings -->
+    <string name="settings_about_app">О приложении</string>
+    <string name="settings_privacy_policy">Политика конфидециальности</string>
+    <string name="settings_terms_of_use">Условия использования</string>
+    <string name="settings_questions_left">Остались вопросы?</string>
+    <string name="settings_other">Другое</string>
+    <string name="settings_guide">Обучение</string>
+    <string name="settings_metrics">Выбор СИ</string>
+    <string name="settings_subscription">Подписка</string>
+    <string name="settings_localization">Локализация</string>
+    <string name="settings_rate_app">Нравится приложение?</string>
+    <string name="settings_rate_app_desc">Помогите нам улучшить его, оставьте отзыв</string>
+
+    <!-- User account -->
+    <string name="user_account_title">Профиль</string>
+    <string name="user_account_measurements">Замеры пользователя</string>
+    <string name="user_account_find_program">Найти программу</string>
+    <string name="user_account_settings">Настройки</string>
+    <string name="user_account_calculators">Калькуляторы</string>
+    <string name="user_account_notes">Заметки</string>
+    <string name="user_account_log_out">Выйти из аккаунта</string>
+
+    <!-- Quiz -->
+    <string name="quiz_question_1">Вопрос 1</string>
+    <string name="quiz_question_1_title">Что вы хотите улучить?</string>
+    <string name="quiz_question_1_radio_1">Троеборье</string>
+    <string name="quiz_question_1_radio_2">Жим лежа</string>
+    <string name="quiz_question_1_radio_3">Жим лежа + становая тяга</string>
+    <string name="quiz_question_2">Вопрос 2</string>
+    <string name="quiz_question_2_title">Какая у вас цель тренировок?</string>
+    <string name="quiz_question_2_radio_1">Сила</string>
+    <string name="quiz_question_2_radio_2">Выносливость</string>
+    <string name="quiz_question_2_radio_3">Гипертрофия</string>
+    <string name="quiz_question_3">Вопрос 3</string>
+    <string name="quiz_question_3_title">Как часто вы тренируетесь в неделю?</string>
+    <string name="quiz_question_3_radio_1">3+ раза</string>
+    <string name="quiz_question_3_radio_2">2 раза</string>
+    <string name="quiz_question_3_radio_3">1 раз</string>
+    <string name="quiz_question_4">Вопрос 4</string>
+    <string name="quiz_question_4_title">Какие ваши максимумы в движениях?</string>
+    <string name="quiz_question_4_squat">Максимальный присед</string>
+    <string name="quiz_question_4_bench">Максимальный жим лежа</string>
+    <string name="quiz_question_4_deadlift">Максимальная становая тяга</string>
+    <string name="quiz_next_button">Далее</string>
+    <string name="quiz_show_programs_button">Показать подходящие программы</string>
+
+    <!-- Notes -->
+
+    <string name="notes_title">Все заметки</string>
+    <string name="notes_note_create">Создать заметку</string>
+    <string name="notes_note_title_field">Введите название заметки</string>
+    <string name="notes_note_body_field">Введите текст заметки</string>
+    <string name="notes_note_colors">Цвета</string>
+    <string name="notes_note_create_button">Создать</string>
+    <string name="notes_note_edit_note">Редактировать заметку</string>
+    <string name="notes_note_edit_button">Редактироваь</string>
+    <string name="notes_note_delete_note_title">Удалить заметку</string>
+    <string name="notes_note_delete_note_body">Вы уверены, что хотите удалить заметку? Действие нельзя будет отменить!</string>
+    <string name="notes_note_delete_note_yes">Да</string>
+    <string name="notes_note_delete_note_no">Нет</string>
+
+
+    <!-- Barbell Calculator -->
+
+    <string name="calculator_barbell_label_0">Штанга</string>
+    <string name="calculator_barbell_label_1">Расчет дисков для штанги</string>
+    <string name="calculator_barbell_label_2">Диски должны быть с обеих сторон <b>одинаковые</b>!</string>
+    <string name="calculator_barbell_label_3">Введите вес</string>
+    <string name="calculator_barbell_label_input">Введите вес</string>
+    <string name="calculator_barbell_label_button">Расчитать</string>
+    <string name="red_plate">25</string>
+    <string name="blue_plate">20</string>
+    <string name="yellow_plate">15</string>
+    <string name="green_plate">10</string>
+    <string name="five_plate">5</string>
+    <string name="two_half_plate">2.5</string>
+    <string name="one_quarter_plate">1.25</string>
+
+</resources>

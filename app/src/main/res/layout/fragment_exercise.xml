@@ -20,7 +20,7 @@
         android:fontFamily="@font/source_sans_pro_semibold"
         android:gravity="center_horizontal"
         android:paddingTop="16dp"
-        android:text="Week 1"
+        android:text="@string/exercise_calendar_current_week"
         android:textColor="#ABFFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -129,7 +129,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/source_sans_pro"
                 android:gravity="center_vertical"
-                android:text="@string/program_block"
+                android:text="@string/exercise_block_block_number"
                 android:textColor="#ABFFFFFF" />
         </TableRow>
 
@@ -146,7 +146,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/source_sans_pro_semibold"
                 android:gravity="center_vertical"
-                android:text="@string/program_progress"
+                android:text="@string/exercise_block_progress"
                 android:textColor="#ABFFFFFF" />
         </TableRow>
 
@@ -179,7 +179,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/source_sans_pro"
                 android:gravity="end"
-                android:text="@string/program_completed"
+                android:text="@string/exercise_block_completed"
                 android:textColor="#ABFFFFFF" />
         </TableRow>
 

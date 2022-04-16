@@ -21,9 +21,6 @@ class ExerciseViewModel @Inject constructor(
     private val repository: ExerciseRepository
 ) : ViewModel() {
 
-    val allProgram = repository.getAllPrograms()
-    val allExercise = repository.allExercise
-
     private val currentProgram = MutableLiveData<Program>()
 
     private val todayExercise = MutableLiveData<List<ExerciseHasLoad>>()
@@ -45,7 +42,7 @@ class ExerciseViewModel @Inject constructor(
     }
 
     fun updateCurrentProgress(currentProgress: CurrentProgress){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             repository.updateCurrentProgress(currentProgress)
         }
     }

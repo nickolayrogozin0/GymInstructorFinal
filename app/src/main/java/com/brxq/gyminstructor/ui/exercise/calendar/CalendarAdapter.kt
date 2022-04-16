@@ -1,6 +1,8 @@
 package com.brxq.gyminstructor.ui.exercise.calendar
 
+import android.content.Context
 import android.graphics.Color
+import android.provider.Settings.Global.getString
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +13,7 @@ import com.brxq.gyminstructor.R
 import com.brxq.gyminstructor.model.TrainingDays
 
 class CalendarAdapter(
+    private val context: Context,
     private val onDateClick: ViewHolder.OnDateClick,
     private val trainingDays: TrainingDays
 ) :
@@ -21,7 +24,15 @@ class CalendarAdapter(
     private var listOfDays = listOf(7, 8, 9, 10, 11, 12, 13)
 
     //Календарь начинается в воскресенья, сделать возможность установки календаря с понедельника
-    private val listOfWeekdays = listOf("Sun", "Mon", "Tue", "Wen", "Thu", "Fri", "Sat")
+    private val listOfWeekdays = listOf(
+        R.string.exercise_calendar_sun,
+        R.string.exercise_calendar_mon,
+        R.string.exercise_calendar_tue,
+        R.string.exercise_calendar_wen,
+        R.string.exercise_calendar_thu,
+        R.string.exercise_calendar_fri,
+        R.string.exercise_calendar_sat
+    )
 
     private val trainingDay: TrainingDay =
         TrainingDay(Color.rgb(41, 46, 74), Color.rgb(70, 81, 194))
@@ -88,12 +99,13 @@ class CalendarAdapter(
             holder.day.setTextColor(currentDay.text)
         }
         holder.day.text = listOfDays[position].toString()
-        holder.week.text = listOfWeekdays[position]
+        holder.week.text = context.resources.getString(listOfWeekdays[position])
     }
 
     override fun getItemCount(): Int {
         return listOfDays.size
     }
+
     //Заменить проверку уставновленных тренировочных дней на более адекватный вариант??
     private fun getTrainingDays() {
         listTrainingDays.clear()
@@ -125,7 +137,7 @@ class CalendarAdapter(
         notifyDataSetChanged()
     }
 
-    fun getCurrentDay() : Int {
+    fun getCurrentDay(): Int {
         return currentDayIndex
     }
 }

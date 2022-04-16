@@ -1,6 +1,9 @@
 package com.brxq.gyminstructor
 
+import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -8,7 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 
-@AndroidEntryPoint
+
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,10 +20,11 @@ class MainActivity : AppCompatActivity() {
 
         actionBar?.hide()
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-        val navController = findNavController(R.id.fragment)
-
-        bottomNav.setupWithNavController(navController)
+        Handler(Looper.getMainLooper()).postDelayed({
+            val intent = Intent(this@MainActivity, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 3000)
 
 
     }

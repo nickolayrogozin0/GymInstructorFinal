@@ -17,12 +17,192 @@
         tools:layout="@layout/fragment_program" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="com.brxq.gyminstructor.fragments.StatisticsFragment"
+        android:name="com.brxq.gyminstructor.ui.statistics.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/userFragment"
-        android:name="com.brxq.gyminstructor.fragments.UserFragment"
+        android:name="com.brxq.gyminstructor.ui.user.UserFragment"
         android:label="fragment_user"
-        tools:layout="@layout/fragment_user" />
+        tools:layout="@layout/fragment_user" >
+        <action
+            android:id="@+id/action_userFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_barbellCalculatorFragment"
+            app:destination="@id/barbellCalculatorFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userMeasurementsFragment"
+            app:destination="@id/userMeasurementsFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_questionOneFragment"
+            app:destination="@id/questionOneFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" >
+        <action
+            android:id="@+id/action_settingsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_NDAFragment"
+            app:destination="@id/NDAFragment" />
+        <action
+            android:id="@+id/action_settingsFragment_to_termsOfUseFragment"
+            app:destination="@id/termsOfUseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/NDAFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.items.NDAFragment"
+        android:label="fragment_n_d_a"
+        tools:layout="@layout/fragment_n_d_a" >
+        <action
+            android:id="@+id/action_NDAFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/termsOfUseFragment"
+        android:name="com.brxq.gyminstructor.ui.user.settings.items.TermsOfUseFragment"
+        android:label="fragment_terms_of_use"
+        tools:layout="@layout/fragment_terms_of_use" >
+        <action
+            android:id="@+id/action_termsOfUseFragment_to_settingsFragment"
+            app:destination="@id/settingsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/barbellCalculatorFragment"
+        android:name="com.brxq.gyminstructor.ui.user.calculators.BarbellCalculatorFragment"
+        android:label="fragment_barbell_calculator"
+        tools:layout="@layout/fragment_barbell_calculator" >
+        <action
+            android:id="@+id/action_barbellCalculatorFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/notesFragment"
+        android:name="com.brxq.gyminstructor.ui.user.notes.NotesFragment"
+        android:label="fragment_notes"
+        tools:layout="@layout/fragment_notes" >
+        <action
+            android:id="@+id/action_notesFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+        <action
+            android:id="@+id/action_notesFragment_to_addEditNoteFragment2"
+            app:destination="@id/addEditNoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditNoteFragment"
+        android:name="com.brxq.gyminstructor.ui.user.notes.AddEditNoteFragment"
+        android:label="fragment_add_edit_note"
+        tools:layout="@layout/fragment_add_edit_note" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="body"
+            app:argType="string" />
+        <argument
+            android:name="isEdit"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_addEditNoteFragment_to_notesFragment"
+            app:destination="@id/notesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userMeasurementsFragment"
+        android:name="com.brxq.gyminstructor.UserMeasurementsFragment"
+        android:label="fragment_user_measurements"
+        tools:layout="@layout/fragment_user_measurements" >
+        <action
+            android:id="@+id/action_userMeasurementsFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionOneFragment"
+        android:name="com.brxq.gyminstructor.ui.user.quiz.QuestionOneFragment"
+        android:label="fragment_question_one"
+        tools:layout="@layout/fragment_question_one" >
+        <action
+            android:id="@+id/action_questionOneFragment_to_questionTwoFragment"
+            app:destination="@id/questionTwoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionTwoFragment"
+        android:name="com.brxq.gyminstructor.ui.user.quiz.QuestionTwoFragment"
+        android:label="fragment_question_two"
+        tools:layout="@layout/fragment_question_two" >
+        <action
+            android:id="@+id/action_questionTwoFragment_to_questionThreeFragment"
+            app:destination="@id/questionThreeFragment" />
+        <argument
+            android:name="q1a"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionThreeFragment"
+        android:name="com.brxq.gyminstructor.ui.user.quiz.QuestionThreeFragment"
+        android:label="fragment_question_three"
+        tools:layout="@layout/fragment_question_three" >
+        <action
+            android:id="@+id/action_questionThreeFragment_to_questionFourFragment"
+            app:destination="@id/questionFourFragment" />
+        <argument
+            android:name="q1a"
+            app:argType="integer" />
+        <argument
+            android:name="q2a"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/questionFourFragment"
+        android:name="com.brxq.gyminstructor.ui.user.quiz.QuestionFourFragment"
+        android:label="fragment_question_four"
+        tools:layout="@layout/fragment_question_four" >
+        <argument
+            android:name="q1a"
+            app:argType="integer" />
+        <argument
+            android:name="q2a"
+            app:argType="string" />
+        <argument
+            android:name="q3a"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_questionFourFragment_to_quizProgramsFragment"
+            app:destination="@id/quizProgramsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizProgramsFragment"
+        android:name="com.brxq.gyminstructor.ui.user.quiz.QuizProgramsFragment"
+        android:label="fragment_quiz_programs"
+        tools:layout="@layout/fragment_quiz_programs" >
+        <argument
+            android:name="q1a"
+            app:argType="integer" />
+        <argument
+            android:name="q2a"
+            app:argType="string" />
+        <argument
+            android:name="q3a"
+            app:argType="integer" />
+        <argument
+            android:name="q4s"
+            app:argType="float" />
+        <argument
+            android:name="q4b"
+            app:argType="float" />
+        <argument
+            android:name="q4d"
+            app:argType="float" />
+    </fragment>
+
+
 </navigation>

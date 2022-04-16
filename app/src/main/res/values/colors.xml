@@ -12,4 +12,14 @@
     <color name="on_on_background">#FF2A2A2A</color>
     <color name="cyan_ish">#FF0EB1D2</color>
     <color name="dark_blue">#FF4651C2</color>
+
+    <color name="redPlate">#DC3023</color>
+    <color name="bluePlate">#3369FF</color>
+    <color name="yellowPlate">#F7CA18</color>
+    <color name="greenPlate">#26A65B</color>
+    <color name="barbell">#C0C0C0</color>
+    <color name="gray6">#666666</color>
+    <color name="white50">#80FFFFFF</color>
+
+
 </resources>
