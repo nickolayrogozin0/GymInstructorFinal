@@ -14,7 +14,11 @@
         android:id="@+id/programFragment"
         android:name="com.brxq.gyminstructor.ui.programs.ProgramFragment"
         android:label="fragment_program"
-        tools:layout="@layout/fragment_program" />
+        tools:layout="@layout/fragment_program" >
+        <action
+            android:id="@+id/action_programFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
     <fragment
         android:id="@+id/statisticsFragment"
         android:name="com.brxq.gyminstructor.ui.statistics.StatisticsFragment"
@@ -202,6 +206,9 @@
         <argument
             android:name="q4d"
             app:argType="float" />
+        <action
+            android:id="@+id/action_quizProgramsFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
     </fragment>
 
 

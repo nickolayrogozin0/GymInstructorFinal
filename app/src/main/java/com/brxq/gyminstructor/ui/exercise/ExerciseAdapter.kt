@@ -52,16 +52,16 @@ class ExerciseAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = listOfExercisesHasLoad[position]
 
-
-
-        Log.i(
-            "STRING_ID",
-            context.resources.getIdentifier(
-                listOfExercisesHasLoad[position].exercise.exercise_title,
-                "string",
-                context.packageName
-            ).toString()
-        )
+        when (currentItem.exercise.exercise_title){
+            "squat" -> holder.title.text = context.resources.getString(R.string.ex_squat)
+            "bench press" -> holder.title.text = context.resources.getString(R.string.ex_bench_press)
+            "deadlift" -> holder.title.text = context.resources.getString(R.string.ex_deadlift)
+            "overhead press" -> holder.title.text = context.resources.getString(R.string.ex_overhead_press)
+            "biceps curls" -> holder.title.text = context.resources.getString(R.string.ex_biceps_curls)
+            "hammer curls" -> holder.title.text = context.resources.getString(R.string.ex_hammer_curls)
+            "bench press feet up" -> holder.title.text = context.resources.getString(R.string.ex_bench_press_feet_up)
+            "bench press mid grip" -> holder.title.text = context.resources.getString(R.string.ex_bench_press_mid_grip)
+        }
 
         if (
             context.resources.getIdentifier(
