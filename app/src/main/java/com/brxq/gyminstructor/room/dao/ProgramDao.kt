@@ -28,6 +28,9 @@ interface ProgramDao {
     @Query("SELECT * FROM TrainingDays")
     suspend fun getTrainingDays() : TrainingDays
 
+    @Query("SELECT * FROM PROGRAM WHERE speciality = :inputSpeciality AND days == :inputDays")
+    suspend fun getProgramsViaQuiz(inputSpeciality : String, inputDays : Int) : List<Program>
+
     @Update
     suspend fun updateSelectedProgram(currentProgress: CurrentProgress)
 

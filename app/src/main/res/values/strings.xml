@@ -78,7 +78,7 @@
     <string name="quiz_question_1_title">What are you planning to increase?</string>
     <string name="quiz_question_1_radio_1">Powerlifting</string>
     <string name="quiz_question_1_radio_2">Bench press</string>
-    <string name="quiz_question_1_radio_3">Deadlift</string>Bench press + deadlift
+    <string name="quiz_question_1_radio_3">Bench press + deadlift</string>
     <string name="quiz_question_2">Question 2</string>
     <string name="quiz_question_2_title">What is your training purpose</string>
     <string name="quiz_question_2_radio_1">Strength</string>

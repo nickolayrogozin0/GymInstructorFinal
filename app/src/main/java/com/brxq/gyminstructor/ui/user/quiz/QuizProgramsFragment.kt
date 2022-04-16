@@ -1,4 +1,4 @@
-package com.brxq.gyminstructor.ui.programs
+package com.brxq.gyminstructor.ui.user.quiz
 
 import android.app.AlertDialog
 import android.content.DialogInterface
@@ -8,39 +8,45 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.brxq.gyminstructor.R
-import com.brxq.gyminstructor.databinding.FragmentProgramBinding
-import com.brxq.gyminstructor.model.CurrentProgress
+import com.brxq.gyminstructor.databinding.FragmentQuizProgramsBinding
 import com.brxq.gyminstructor.ui.exercise.ExerciseViewModel
+import com.brxq.gyminstructor.ui.programs.ProgramListAdapter
+import com.brxq.gyminstructor.ui.programs.ProgramViewModel
 
-class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
 
+class QuizProgramsFragment : Fragment(), ProgramListAdapter.OnProgramClick {
+
+    private val args: QuizProgramsFragmentArgs by navArgs()
+    private lateinit var binding: FragmentQuizProgramsBinding
+    private var programListAdapter: ProgramListAdapter? = null
     private val exerciseViewModel: ExerciseViewModel by activityViewModels()
     private val programViewModel: ProgramViewModel by activityViewModels()
-    private var binding: FragmentProgramBinding? = null
-    private var programListAdapter: ProgramListAdapter? = null
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentProgramBinding.inflate(layoutInflater)
+        binding = FragmentQuizProgramsBinding.inflate(layoutInflater)
 
         programListAdapter = ProgramListAdapter(this)
-        binding?.programs?.adapter = programListAdapter
-        binding?.programs?.layoutManager = LinearLayoutManager(requireContext())
+        binding.programs.adapter = programListAdapter
+        binding.programs.layoutManager = LinearLayoutManager(requireContext())
 
-        programViewModel.allPrograms.observe(viewLifecycleOwner){
-            programListAdapter?.setData(it)
+        val td = if (args.q3a == 1) 3 else 0
+
+        programViewModel.getProgramsViaQuiz(
+            args.q2a,
+            td
+        ).observe(viewLifecycleOwner){
+            programListAdapter!!.setData(it)
         }
 
-        return binding?.root
+
+        return binding.root
     }
 
     override fun selectProgram(adapterPosition: Int) {
@@ -54,7 +60,7 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
 
     override fun learnMore(adapterPosition: Int) {
         val builder = AlertDialog.Builder(requireContext())
-        val item = binding?.programs?.findViewHolderForAdapterPosition(adapterPosition)
+        val item = binding.programs.findViewHolderForAdapterPosition(adapterPosition)
         builder.setMessage(
             programListAdapter?.listOfPrograms?.get(adapterPosition)?.description
         )
@@ -65,5 +71,6 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
         // Create the AlertDialog object and return it
         builder.create().show()
     }
+
 
 }

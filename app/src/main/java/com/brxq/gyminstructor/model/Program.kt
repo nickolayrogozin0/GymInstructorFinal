@@ -11,5 +11,6 @@ data class Program(
     val days : Int,
     val weeks : Int,
     val difficulty : Int?,
-    val bodyweight : Int?
+    val bodyweight : Int?,
+    val description : String?
 )

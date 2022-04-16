@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="main" android:icon="@drawable/ic_calendar" android:id="@+id/mainFragment"/>
-    <item android:title="plans" android:icon="@drawable/ic_dumbell" android:id="@+id/programFragment"/>
-    <item android:title="statistics" android:icon="@drawable/ic_chart_square_bar" android:id="@+id/statisticsFragment"/>
-    <item android:title="user" android:icon="@drawable/ic_user" android:id="@+id/userFragment"/>
+    <item android:title="main" android:icon="@drawable/ic_calendar" android:iconTint="@color/bottom_nav" android:id="@+id/mainFragment"/>
+    <item android:title="plans" android:icon="@drawable/ic_dumbell" android:iconTint="@color/bottom_nav" android:id="@+id/programFragment"/>
+    <item android:title="statistics" android:icon="@drawable/ic_chart_square_bar" android:iconTint="@color/bottom_nav" android:id="@+id/statisticsFragment"/>
+    <item android:title="user" android:icon="@drawable/ic_user" android:iconTint="@color/bottom_nav" android:id="@+id/userFragment"/>
 </menu>

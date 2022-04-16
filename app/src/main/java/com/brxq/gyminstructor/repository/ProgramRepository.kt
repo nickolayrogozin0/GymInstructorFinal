@@ -1,5 +1,6 @@
 package com.brxq.gyminstructor.repository
 
+import androidx.lifecycle.LiveData
 import com.brxq.gyminstructor.model.CurrentProgress
 import com.brxq.gyminstructor.model.Program
 import com.brxq.gyminstructor.room.ProgramExerciseDatabase
@@ -11,8 +12,15 @@ class ProgramRepository @Inject constructor(
 
     val allPrograms = database.programDao().getAllPrograms()
 
-    suspend fun updateSelectedProgram(currentProgress: CurrentProgress){
+    suspend fun updateSelectedProgram(currentProgress: CurrentProgress) {
         database.programDao().updateSelectedProgram(currentProgress)
+    }
+
+    suspend fun getProgramsViaQuiz(
+        inputSpeciality: String,
+        inputDays: Int
+    ): List<Program> {
+        return database.programDao().getProgramsViaQuiz(inputSpeciality, inputDays)
     }
 
 }

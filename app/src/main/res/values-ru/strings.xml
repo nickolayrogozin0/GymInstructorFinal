@@ -78,7 +78,7 @@
     <string name="quiz_question_1_title">Что вы хотите улучить?</string>
     <string name="quiz_question_1_radio_1">Троеборье</string>
     <string name="quiz_question_1_radio_2">Жим лежа</string>
-    <string name="quiz_question_1_radio_3">Становая тяга</string>Жим лежа + становая тяга
+    <string name="quiz_question_1_radio_3">Жим лежа + становая тяга</string>
     <string name="quiz_question_2">Вопрос 2</string>
     <string name="quiz_question_2_title">Какая у вас цель тренировок?</string>
     <string name="quiz_question_2_radio_1">Сила</string>

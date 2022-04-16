@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileTV">
 
-        <View
+        <ImageView
             android:id="@+id/userCircleView"
             android:layout_width="64dp"
             android:layout_height="64dp"

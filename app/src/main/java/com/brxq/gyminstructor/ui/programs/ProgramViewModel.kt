@@ -1,5 +1,7 @@
 package com.brxq.gyminstructor.ui.programs
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.brxq.gyminstructor.model.CurrentProgress
@@ -16,12 +18,22 @@ class ProgramViewModel @Inject constructor(
 
     val allPrograms = repository.allPrograms
 
-    fun updateSelectedProgram(currentProgress : CurrentProgress){
+    private val programsViaQuiz = MutableLiveData<List<Program>>()
 
+    fun updateSelectedProgram(currentProgress: CurrentProgress) {
         viewModelScope.launch {
             repository.updateSelectedProgram(currentProgress)
         }
+    }
 
+    fun getProgramsViaQuiz(
+        inputSpeciality: String,
+        inputDays: Int
+    ): LiveData<List<Program>> {
+        viewModelScope.launch {
+            programsViaQuiz.value = repository.getProgramsViaQuiz(inputSpeciality, inputDays)
+        }
+        return programsViaQuiz
     }
 
 }
