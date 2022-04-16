@@ -14,7 +14,7 @@ import com.brxq.gyminstructor.room.dao.ProgramDao
         TrainingDays::class
                ],
     exportSchema = false,
-    version = 12
+    version = 13
 )
 abstract class ProgramExerciseDatabase : RoomDatabase() {
 
