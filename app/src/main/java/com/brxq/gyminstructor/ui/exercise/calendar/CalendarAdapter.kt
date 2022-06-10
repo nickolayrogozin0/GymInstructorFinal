@@ -19,20 +19,19 @@ class CalendarAdapter(
 ) :
     RecyclerView.Adapter<CalendarAdapter.ViewHolder>() {
 
+    private var viewModel = CalendarViewModel()
+
     private var currentDayIndex = 0
     private var listTrainingDays = ArrayList<Int>()
-    private var listOfDays = listOf(7, 8, 9, 10, 11, 12, 13)
+    private var listOfDays = viewModel.getWeekValues()
 
     //Календарь начинается в воскресенья, сделать возможность установки календаря с понедельника
-    private val listOfWeekdays = listOf(
-        R.string.exercise_calendar_sun,
-        R.string.exercise_calendar_mon,
-        R.string.exercise_calendar_tue,
-        R.string.exercise_calendar_wen,
-        R.string.exercise_calendar_thu,
-        R.string.exercise_calendar_fri,
-        R.string.exercise_calendar_sat
-    )
+    private var listOfWeekdays = viewModel.listOfWeekdays
+
+    fun setDays(list: List<Int>){
+        listOfDays = list
+        notifyDataSetChanged()
+    }
 
     private val trainingDay: TrainingDay =
         TrainingDay(Color.rgb(41, 46, 74), Color.rgb(70, 81, 194))
@@ -99,7 +98,16 @@ class CalendarAdapter(
             holder.day.setTextColor(currentDay.text)
         }
         holder.day.text = listOfDays[position].toString()
-        holder.week.text = context.resources.getString(listOfWeekdays[position])
+        holder.week.text = context.resources.getString(when(listOfWeekdays[position]){
+            "Sun" -> R.string.exercise_calendar_sun
+            "Mon" -> R.string.exercise_calendar_mon
+            "Tue" -> R.string.exercise_calendar_tue
+            "Wen" -> R.string.exercise_calendar_wen
+            "Thu" -> R.string.exercise_calendar_thu
+            "Fri" -> R.string.exercise_calendar_fri
+            "Sat"-> R.string.exercise_calendar_sat
+            else -> R.string.exercise_calendar_sun
+        })
     }
 
     override fun getItemCount(): Int {

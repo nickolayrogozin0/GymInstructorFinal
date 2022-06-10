@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomHintDisabled" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">#d3d3d3</item>
+    </style>
+    <style name="CustomHintEnabled" parent="TextAppearance.AppCompat">
+        <item name="android:textColorHint">#d3d3d3</item>
+    </style>
+</resources>

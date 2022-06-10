@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/profileTV">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/userCircleView"
             android:layout_width="64dp"
             android:layout_height="64dp"
@@ -42,7 +42,7 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
             android:layout_weight="0"
-            android:background="@drawable/circle" />
+            android:src="@drawable/avatar" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -202,6 +202,30 @@
         android:fontFamily="@font/source_sans_pro_semibold"
         android:gravity="start|center_vertical"
         android:text="@string/user_account_log_out"
+        android:textAllCaps="false"
+        android:textColor="#DEFFFFFF"
+        android:textSize="18sp"
+        app:backgroundTint="@color/on_on_background"
+        app:iconPadding="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/docsBtn" />
+
+    <Button
+        android:id="@+id/docsBtn"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/background"
+        android:drawableLeft="@drawable/ic_info"
+        android:drawableRight="@drawable/ic_chevron_right"
+        android:elevation="10dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:gravity="start|center_vertical"
+        android:text="Справочная информация"
         android:textAllCaps="false"
         android:textColor="#DEFFFFFF"
         android:textSize="18sp"

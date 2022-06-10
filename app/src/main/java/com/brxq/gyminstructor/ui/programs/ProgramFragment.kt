@@ -50,13 +50,13 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
     override fun selectProgram(adapterPosition: Int) {
         val builder = AlertDialog.Builder(requireContext())
         builder.setMessage(
-            "Are you sure, you want select ${programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_title}?"
+            "Вы уверены, что хотите выбрать программу ${programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_title}?"
         )
-            .setNegativeButton("Close",
+            .setNegativeButton("Закрыть",
                 DialogInterface.OnClickListener { dialog, id ->
                     // User cancelled the dialog
                 })
-            .setPositiveButton("Select",
+            .setPositiveButton("Выбрать",
                 DialogInterface.OnClickListener { dialog, id ->
                     exerciseViewModel.getCurrentProgress().observe(viewLifecycleOwner){
                         it.program_id = programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_id!!
@@ -76,7 +76,7 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
         builder.setMessage(
             programListAdapter?.listOfPrograms?.get(adapterPosition)?.description
         )
-            .setNegativeButton("Close",
+            .setNegativeButton("Закрыть",
                 DialogInterface.OnClickListener { dialog, id ->
                     // User cancelled the dialog
                 })

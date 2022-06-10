@@ -44,6 +44,9 @@
         <action
             android:id="@+id/action_userFragment_to_questionOneFragment"
             app:destination="@id/questionOneFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_infoFragment"
+            app:destination="@id/infoFragment" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -209,6 +212,15 @@
         <action
             android:id="@+id/action_quizProgramsFragment_to_mainFragment"
             app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoFragment"
+        android:name="com.brxq.gyminstructor.InfoFragment"
+        android:label="fragment_info"
+        tools:layout="@layout/fragment_info" >
+        <action
+            android:id="@+id/action_infoFragment_to_userFragment"
+            app:destination="@id/userFragment" />
     </fragment>
 
 
