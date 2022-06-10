@@ -64,6 +64,11 @@ class UserFragment : Fragment() {
         binding.notesBtn.setOnClickListener {
             findNavController().navigate(R.id.action_userFragment_to_notesFragment)
         }
+
+        binding.docsBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_userFragment_to_infoFragment)
+        }
+
         return binding.root
     }
 

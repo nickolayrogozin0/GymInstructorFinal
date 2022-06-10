@@ -19,12 +19,13 @@ import com.brxq.gyminstructor.model.CurrentProgress
 
 import com.brxq.gyminstructor.model.TrainingDays
 import com.brxq.gyminstructor.ui.exercise.calendar.CalendarAdapter
+import com.brxq.gyminstructor.ui.exercise.calendar.CalendarViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
     ExerciseAdapter.OnExerciseClick {
-
+    private val calendarViewModel = CalendarViewModel()
     private val viewModel: ExerciseViewModel by viewModels()
     private var binding: FragmentExerciseBinding? = null
     private var calendarAdapter: CalendarAdapter? = null
@@ -45,15 +46,25 @@ class ExerciseFragment : Fragment(), CalendarAdapter.ViewHolder.OnDateClick,
         }
 
         binding?.left?.setOnClickListener {
-            viewModel.changeWeek(-1)
-            changeWeek()
-            initProgramBlock()
+            val week = calendarViewModel.currentWeek
+            calendarViewModel.decreaseWeek()
+            if (week != calendarViewModel.currentWeek){
+                calendarAdapter?.setDays(calendarViewModel.getWeekValues())
+                viewModel.changeWeek(-1)
+                changeWeek()
+                initProgramBlock()
+            }
         }
 
         binding?.right?.setOnClickListener {
-            viewModel.changeWeek(1)
-            changeWeek()
-            initProgramBlock()
+            val week = calendarViewModel.currentWeek
+            calendarViewModel.increaseWeek()
+            if (week != calendarViewModel.currentWeek){
+                calendarAdapter?.setDays(calendarViewModel.getWeekValues())
+                viewModel.changeWeek(1)
+                changeWeek()
+                initProgramBlock()
+            }
         }
 
         return binding?.root

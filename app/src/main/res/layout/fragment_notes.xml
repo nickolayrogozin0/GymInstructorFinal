@@ -19,7 +19,7 @@
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/on_background"
         android:src="@drawable/ic_baseline_add_24"
-        android:tint="@color/white"
+        app:tint="@color/white"
         app:backgroundTint="@color/on_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

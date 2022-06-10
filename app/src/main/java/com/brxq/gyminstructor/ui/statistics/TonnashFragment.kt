@@ -8,17 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.brxq.gyminstructor.R
-import com.brxq.gyminstructor.databinding.StatiscticsProgramChartFragmentBinding
+
+import com.brxq.gyminstructor.databinding.TonnashFragmentBinding
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 
 
-class StatisticsProgramChartFragment : Fragment() {
+class TonnashFragment : Fragment() {
 
 
-    private var binding: StatiscticsProgramChartFragmentBinding? = null
+    private var binding: TonnashFragmentBinding? = null
 
     private var viewModel: StatiscticsProgramChartViewModel? = null
 
@@ -26,7 +26,7 @@ class StatisticsProgramChartFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = StatiscticsProgramChartFragmentBinding.inflate(layoutInflater)
+        binding = TonnashFragmentBinding.inflate(layoutInflater)
 
         binding?.chart?.setTouchEnabled(false)
         binding?.chart?.setDragEnabled(false)
@@ -42,11 +42,10 @@ class StatisticsProgramChartFragment : Fragment() {
 
         val entries: MutableList<Entry> = ArrayList()
 
-
-        entries.add(Entry(1f, 324F))
-        entries.add(Entry(2f, 297F))
-        entries.add(Entry(3f, 192F))
-        entries.add(Entry(4f, 268F))
+        entries.add(Entry(1f, 17193F))
+        entries.add(Entry(2f, 16063F))
+        entries.add(Entry(3f, 9885F))
+        entries.add(Entry(4f, 15123F))
 
         val dataSet = LineDataSet(entries, null)
 
