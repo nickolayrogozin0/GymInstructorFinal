@@ -3,22 +3,14 @@ package com.brxq.gyminstructor.ui.programs
 import android.app.AlertDialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.brxq.gyminstructor.R
 import com.brxq.gyminstructor.databinding.FragmentProgramBinding
-import com.brxq.gyminstructor.model.CurrentProgress
-import com.brxq.gyminstructor.ui.exercise.ExerciseFragment
 import com.brxq.gyminstructor.ui.exercise.ExerciseViewModel
 
 class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
@@ -52,20 +44,21 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
         builder.setMessage(
             "Are you sure, you want select ${programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_title}?"
         )
-            .setNegativeButton("Close",
-                DialogInterface.OnClickListener { dialog, id ->
-                    // User cancelled the dialog
-                })
-            .setPositiveButton("Select",
-                DialogInterface.OnClickListener { dialog, id ->
-                    exerciseViewModel.getCurrentProgress().observe(viewLifecycleOwner){
-                        it.program_id = programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_id!!
-                        exerciseViewModel.updateCurrentProgress(
-                            it
-                        )
-                    }
-                    findNavController().navigate(ProgramFragmentDirections.actionProgramFragmentToMainFragment())
-                })
+            .setNegativeButton("Close"
+            ) { _, _ ->
+                // User cancelled the dialog
+            }
+            .setPositiveButton("Select"
+            ) { _, _ ->
+                exerciseViewModel.getCurrentProgress().observe(viewLifecycleOwner) {
+                    it.program_id =
+                        programListAdapter?.listOfPrograms?.get(adapterPosition)?.program_id!!
+                    exerciseViewModel.updateCurrentProgress(
+                        it
+                    )
+                }
+                findNavController().navigate(ProgramFragmentDirections.actionProgramFragmentToMainFragment())
+            }
         // Create the AlertDialog object and return it
         builder.create().show()
     }
@@ -76,10 +69,10 @@ class ProgramFragment : Fragment(), ProgramListAdapter.OnProgramClick {
         builder.setMessage(
             programListAdapter?.listOfPrograms?.get(adapterPosition)?.description
         )
-            .setNegativeButton("Close",
-                DialogInterface.OnClickListener { dialog, id ->
-                    // User cancelled the dialog
-                })
+            .setNegativeButton("Close"
+            ) { _, _ ->
+                // User cancelled the dialog
+            }
         // Create the AlertDialog object and return it
         builder.create().show()
     }
